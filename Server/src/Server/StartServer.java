@@ -7,7 +7,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
-public class Start {
+public class StartServer {
     public static void main(String[] args) {
         try {
             IServer s = new Server();
