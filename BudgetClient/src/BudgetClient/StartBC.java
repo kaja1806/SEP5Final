@@ -1,6 +1,8 @@
 package BudgetClient;
 
 import Controller.BController;
+import Controller.RegistrationController;
+import Model.IUserModel;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,14 +15,13 @@ public class StartBC extends Application {
         launch(args);
     }
 
+    public IUserModel IuserModel;
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/View/BClient.fxml"));
+        loader.setLocation(getClass().getResource("/View/Registration.fxml"));
         Parent main = loader.load();
-        BController ctrl = loader.getController();
-        IBudgetClient cl = new BudgetClient();
-        /*IECModel model = new ECModel(cl);
-        ctrl.init(model);*/
+        RegistrationController ctrl = loader.getController();
+        ctrl.init(IuserModel);
         primaryStage.setTitle("Budget");
         primaryStage.setScene(new Scene(main, 600, 400));
         primaryStage.show();
