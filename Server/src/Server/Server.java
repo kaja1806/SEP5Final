@@ -4,6 +4,7 @@ import Interface.*;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.Connection;
 
 public class Server implements IServer {
     public Server() throws RemoteException {
@@ -14,6 +15,5 @@ public class Server implements IServer {
     public void message(String msg) {
         System.out.println(msg);
     }
-
 
 }
