@@ -1,23 +1,15 @@
 package Controller;
 
-import Classes.User;
 import DB.UserDAO;
-import Model.IUserModel;
 import Model.UserModel;
-import Model.UserModel.RegistrationModel;
-import Model.UserToDB;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class RegistrationController {
 
@@ -29,12 +21,6 @@ public class RegistrationController {
     public PasswordField PasswordConfirmation;
     public TextField PhoneNr;
     public ComboBox NameOfBank;
-    public IUserModel IuserModel;
-
-    public void init(IUserModel userModel) {
-        this.IuserModel = userModel;
-    }
-
 
     @FXML
     public void handleRegistration() {
@@ -55,10 +41,9 @@ public class RegistrationController {
         }
     }
 
-
     public void registerUserToApplication() {
 
-        RegistrationModel x = new RegistrationModel(
+        UserModel.RegistrationModel x = new UserModel.RegistrationModel(
                 FirstName.getText(),
                 LastName.getText(),
                 Email.getText(),

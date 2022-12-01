@@ -4,13 +4,10 @@ import Model.UserModel;
 
 import java.sql.SQLException;
 
-public class UserDAO implements IUserDAO{
+public class UserDAO{
 
     private Conn conn;
 
-
-
-    @Override
     public String createUser(UserModel.RegistrationModel registrationModel)  {
     conn = Conn.getInstance();
         String sql = "INSERT INTO users values('" + registrationModel.getFirstName() + "','"
@@ -18,8 +15,7 @@ public class UserDAO implements IUserDAO{
                 + registrationModel.getEmail() + "','"
                 + registrationModel.getAddress() + "','"
                 + registrationModel.getPhoneNr() + "','"
-                + registrationModel.getPassword() + "','"
-                + registrationModel.getPasswordConfirmation() + "');";
+                + registrationModel.getPassword() + "');";
         try {
             conn.update(sql);
 

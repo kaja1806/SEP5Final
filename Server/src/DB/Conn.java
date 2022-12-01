@@ -4,30 +4,31 @@ import java.sql.*;
 
 /**
  * Takes care of the database access read/write
+ *
  * @version 1.0
  */
 public class Conn {
 
-    private final String url;
-    private final String user;
-    private final String pw;
-    private Connection connection;
-    private static Conn conn;
     private static final String DRIVER = "org.postgresql.Driver";
     private static final String URL = "jdbc:postgresql://localhost:5432/postgres?currentSchema=dbo";
     private static final String USER = "postgres";
     private static final String PASSWORD = "Kaja1806";
+    private static Conn conn;
+    private final String url;
+    private final String user;
+    private final String pw;
+    private Connection connection;
 
     /**
      * Constructor that uses driver, url, user and password
+     *
      * @param driver the driver for postgressql
-     * @param url the url for accessing the host
-     * @param user the username to access the database
-     * @param pw the password to access the database
+     * @param url    the url for accessing the host
+     * @param user   the username to access the database
+     * @param pw     the password to access the database
      * @throws ClassNotFoundException
      */
-    private Conn(String driver, String url, String user, String pw)
-            throws ClassNotFoundException {
+    private Conn(String driver, String url, String user, String pw) throws ClassNotFoundException {
         this.url = url;
         this.user = user;
         this.pw = pw;
@@ -37,18 +38,19 @@ public class Conn {
 
     /**
      * Constructor that uses database name, user and password
+     *
      * @param databaseName database name
-     * @param user the username to access the database
-     * @param pw the password to access the database
+     * @param user         the username to access the database
+     * @param pw           the password to access the database
      * @throws ClassNotFoundException
      */
-    private Conn(String databaseName, String user, String pw)
-            throws ClassNotFoundException {
+    private Conn(String databaseName, String user, String pw) throws ClassNotFoundException {
         this(DRIVER, URL + databaseName, user, pw);
     }
 
     /**
      * Constructor that uses database name
+     *
      * @param databaseName database name
      * @throws ClassNotFoundException
      */
@@ -58,11 +60,13 @@ public class Conn {
 
     /**
      * Constructor uses local variables
+     *
      * @throws ClassNotFoundException
      */
     private Conn() throws ClassNotFoundException {
         this(DRIVER, URL, USER, PASSWORD);
     }
+
     /*Singleton  Lazy instantiation*/
     public static Conn getInstance() {
 
@@ -76,6 +80,7 @@ public class Conn {
         }
         return conn;
     }
+
     /**
      * @param sql
      * @throws SQLException
@@ -87,15 +92,16 @@ public class Conn {
         closeDatabase();
 
     }
-    public int  delete(String sql) throws SQLException {
+
+    public int delete(String sql) throws SQLException {
         openDatabase();
         Statement stm = connection.createStatement();
         int delete = stm.executeUpdate(sql);
         closeDatabase();
         return delete;
 
-
     }
+
     /**
      * @throws SQLException
      */
