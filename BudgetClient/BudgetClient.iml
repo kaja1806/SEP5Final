@@ -10,7 +10,6 @@
     <orderEntry type="module" module-name="Shared" />
     <orderEntry type="module" module-name="Server" />
     <orderEntry type="library" name="postgresql" level="project" />
-    <orderEntry type="library" name="javafx" level="project" />
     <orderEntry type="library" name="lib" level="application" />
   </component>
 </module>

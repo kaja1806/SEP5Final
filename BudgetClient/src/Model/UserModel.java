@@ -1,5 +1,8 @@
 package Model;
 
+import javafx.scene.control.ComboBox;
+
+import javax.swing.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -10,7 +13,7 @@ public class UserModel {
         public String LastName;
         public String Email;
         public String Address;
-        public List<NameOfBanks> NameOfBank;
+        public NameOfBanks NameOfBank;
         public String PhoneNr;
         public String Password;
         public String PasswordConfirmation;
@@ -41,10 +44,6 @@ public class UserModel {
             return Address;
         }
 
-        public List<NameOfBanks> getNameOfBank() {
-            return NameOfBank;
-        }
-
         public String getPhoneNr() {
             return PhoneNr;
         }
@@ -58,12 +57,12 @@ public class UserModel {
         }
     }
 
-    public class NameOfBanks {
-        public String Bank1;
-        public String Bank2;
-        public String Bank3;
-        public String Bank4;
-        public String Bank5;
+    public static class NameOfBanks extends ComboBox {
+        public String Bank1 = "Nordea";
+        public String Bank2 = "Danske Bank";
+        public String Bank3 = "Sydbank";
+        public String Bank4 = "Nykredit Bank";
+        public String Bank5 = "Jyske Bank";
     }
 
 

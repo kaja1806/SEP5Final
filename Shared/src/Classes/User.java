@@ -12,19 +12,16 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public String getPassword(){
+    public String getPassword() {
         return password;
     }
 
-    public String getUsername(){
+    public String getUsername() {
         return username;
     }
 
     @Override
-    public String toString(){
-        return "User{" +
-                "username='" + username + '\'' +
-                ", password = '" + password + '\'' +
-                '}';
+    public String toString() {
+        return "User{" + "username='" + username + '\'' + ", password = '" + password + '\'' + '}';
     }
 }

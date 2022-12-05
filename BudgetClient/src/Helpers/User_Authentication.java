@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class User_Authentication {
     public static int uid = -1;
-    private static ResultSet resultSet = null;
+    private static final ResultSet resultSet = null;
 
     public static int isValid(String user_login, String pass) throws RemoteException {
         Server s = new Server();

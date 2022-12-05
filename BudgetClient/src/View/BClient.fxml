@@ -10,33 +10,34 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxmlj" fx:controller="Controller.BController">
+<AnchorPane xmlns:fx="http://javafx.com/fxmlj" xmlns="http://javafx.com/javafx" fx:controller="Controller.BController">
     <children>
         <VBox layoutY="-2.0">
             <children>
                 <GridPane minHeight="100.0" prefWidth="300.0">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.0" minWidth="10.0" prefWidth="84.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="259.0" minWidth="10.0" prefWidth="216.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.0" minWidth="10.0" prefWidth="84.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="259.0" minWidth="10.0" prefWidth="216.0"/>
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="71.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="71.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="74.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES"/>
+                        <RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="71.0" vgrow="SOMETIMES"/>
+                        <RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="71.0" vgrow="SOMETIMES"/>
+                        <RowConstraints maxHeight="74.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES"/>
                     </rowConstraints>
                     <children>
-                        <Label text="Username" />
-                        <Label text="Password" GridPane.rowIndex="1" />
+                        <Label text="Username"/>
+                        <Label text="Password" GridPane.rowIndex="1"/>
                         <HBox prefHeight="50.0" prefWidth="216.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                             <children>
                                 <!--<Button mnemonicParsing="false" onAction="#onRegisterButton" text="Register" />
                                 <Button mnemonicParsing="false" onAction="#onLoginButton" text="Login" />-->
                             </children>
                         </HBox>
-                        <TextField fx:id="usernameTextField" GridPane.columnIndex="1" />
-                        <TextField fx:id="passwordTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label fx:id="loginInResultLabel" prefHeight="23.0" prefWidth="160.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="usernameTextField" GridPane.columnIndex="1"/>
+                        <TextField fx:id="passwordTextField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                        <Label fx:id="loginInResultLabel" prefHeight="23.0" prefWidth="160.0" text="Label"
+                               GridPane.columnIndex="1" GridPane.rowIndex="2"/>
                     </children>
                 </GridPane>
             </children>

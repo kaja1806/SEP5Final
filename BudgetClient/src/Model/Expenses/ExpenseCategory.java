@@ -19,7 +19,7 @@ public class ExpenseCategory implements Saveable {
         this.spentAmount = spent;
     }
 
-    public boolean addTransaction (double amount) throws InsufficientBalanceException {
+    public boolean addTransaction(double amount) throws InsufficientBalanceException {
         if (this.spentAmount + amount >= this.budgetAmount) {
             throw new InsufficientBalanceException();
         } else {
