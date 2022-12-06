@@ -23,11 +23,11 @@ public class PaymentController {
 
     public void initialize() {
 
-        ObservableList<Category> a = ca.getAllCategories();
+        ObservableList<Category> categories = ca.getAllCategories();
         ObservableList<String> data = FXCollections.observableArrayList();
 
-        for (Category ass : a) {
-            String categoryName = ass.CategoryName;
+        for (Category cat : categories) {
+            String categoryName = cat.CategoryName;
             data.add(categoryName);
         }
         Categories.setItems(data);

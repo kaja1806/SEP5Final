@@ -1,8 +1,5 @@
 package BudgetClient;
 
-import Controller.LoginController;
-import Controller.RegistrationController;
-import Model.UserModel;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

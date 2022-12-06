@@ -4,13 +4,26 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
-            xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="Controller.OverviewController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.OverviewController">
 
     <children>
-        <Button fx:id="paymentPage" layoutX="391.0" layoutY="159.0" mnemonicParsing="false" onAction="#makePayment"
-                prefHeight="26.0" prefWidth="101.0" text="Make payment"/>
+        <Button fx:id="paymentPage" layoutX="23.0" layoutY="321.0" mnemonicParsing="false" onAction="#makePayment" prefHeight="26.0" prefWidth="101.0" text="Make payment" />
 
-        <PieChart fx:id="pieChart" layoutX="37.0" layoutY="31.0" prefHeight="307.0" prefWidth="287.0"/>
+        <PieChart fx:id="pieChart" layoutX="23.0" layoutY="14.0" prefHeight="307.0" prefWidth="287.0" />
+      <MenuBar layoutX="75.0" layoutY="360.0" prefHeight="25.0" prefWidth="470.0">
+        <!--<menus>
+          <Menu mnemonicParsing="false" text="Home" onAction="#goToLogin">
+          </Menu>
+
+          <Menu mnemonicParsing="false" text="Premium" onAction="#goToPremium">
+          </Menu>
+            <Menu mnemonicParsing="false" text="+" onAction="#addUser">
+            </Menu>
+            <Menu mnemonicParsing="false" text="Overview" onAction="goToOverview">
+            </Menu>
+            <Menu mnemonicParsing="false" text="Settings" onAction="goToSettings">
+            </Menu>
+        </menus>-->
+      </MenuBar>
     </children>
 </AnchorPane>

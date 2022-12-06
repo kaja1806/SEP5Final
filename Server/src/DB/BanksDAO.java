@@ -1,35 +1,37 @@
 package DB;
 
+import Model.Banks;
 import Model.Category;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+public class BanksDAO {
 
-public class CategoryDAO {
     private Conn conn;
 
-    public ObservableList<Category> getAllCategories() {
+    public ObservableList<Banks> getAllBanks() {
 
         conn = Conn.getInstance();
 
-        ObservableList<Category> allCategories = FXCollections.observableArrayList();
+        ObservableList<Banks> allBanks = FXCollections.observableArrayList();
 
-        String sql = "SELECT * FROM category";
+        String sql = "SELECT * FROM listofbanks";
 
         try {
             ResultSet rs = conn.query(sql);
             while (rs.next()) {
 
-                String categoryName = rs.getString("categoryname");
-                allCategories.add(new Category(categoryName));
+                String bankName = rs.getString("nameofbank");
+                allBanks.add(new Banks(bankName));
 
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return allCategories;
+        return allBanks;
     }
 }

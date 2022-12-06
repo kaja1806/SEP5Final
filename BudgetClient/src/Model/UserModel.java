@@ -13,12 +13,13 @@ public class UserModel {
         public String LastName;
         public String Email;
         public String Address;
-        public NameOfBanks NameOfBank;
+        public String NameOfBank = "";
         public String PhoneNr;
         public String Password;
         public String PasswordConfirmation;
 
-        public RegistrationModel(String firstName, String lastName, String email, String address, String phoneNr, String password, String passwordConfirmation) {
+
+        public RegistrationModel(String firstName, String lastName, String email, String address, String phoneNr, String password, String passwordConfirmation, String nameOfBank) {
             FirstName = firstName;
             LastName = lastName;
             Email = email;
@@ -26,6 +27,7 @@ public class UserModel {
             PhoneNr = phoneNr;
             Password = password;
             PasswordConfirmation = passwordConfirmation;
+            NameOfBank = nameOfBank;
         }
 
         public String getFirstName() {
@@ -52,19 +54,10 @@ public class UserModel {
             return Password;
         }
 
-        public String getPasswordConfirmation() {
-            return PasswordConfirmation;
+        public String getNameOfBank() {
+            return NameOfBank;
         }
     }
-
-    public static class NameOfBanks extends ComboBox {
-        public String Bank1 = "Nordea";
-        public String Bank2 = "Danske Bank";
-        public String Bank3 = "Sydbank";
-        public String Bank4 = "Nykredit Bank";
-        public String Bank5 = "Jyske Bank";
-    }
-
 
     public class LoginModel {
         private String email;

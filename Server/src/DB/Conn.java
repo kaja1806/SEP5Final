@@ -2,6 +2,8 @@ package DB;
 
 import java.sql.*;
 
+import static java.sql.DriverManager.*;
+
 /**
  * Takes care of the database access read/write
  *
@@ -106,7 +108,7 @@ public class Conn {
      * @throws SQLException
      */
     private void openDatabase() throws SQLException {
-        connection = DriverManager.getConnection(url, user, pw);
+        connection = getConnection(url, user, pw);
     }
 
     /**
