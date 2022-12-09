@@ -1,21 +1,3 @@
-package Controller;
-
-import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.chart.PieChart;
-
-import javafx.stage.Stage;
-
-import java.io.IOException;
-
-
-public class OverviewController {
-    public PieChart pieChart;
-
-
 
     /*public Button paymentBtn;
     public TableColumn<Payment, String> paymentDate;
@@ -51,20 +33,20 @@ public class OverviewController {
     }
     */
 
-    public void makePayment(ActionEvent event) {
-
-        try {
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("/View/Payment.fxml"));
-            stage.setTitle("Registration");
-            stage.setScene(new Scene(root));
-            stage.show();
-            ((Node) (event.getSource())).getScene().getWindow().hide();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
-}
+//    public void makePayment(ActionEvent event) {
+//
+//        try {
+//            Stage stage = new Stage();
+//            Parent root = FXMLLoader.load(getClass().getResource("/View/Payment.fxml"));
+//            stage.setTitle("Registration");
+//            stage.setScene(new Scene(root));
+//            stage.show();
+//            ((Node) (event.getSource())).getScene().getWindow().hide();
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
+//}
 

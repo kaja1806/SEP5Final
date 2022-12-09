@@ -32,7 +32,7 @@
             <Button layoutX="217.0" layoutY="339.0" mnemonicParsing="false" style="-fx-background-color: #f7c19b;"
                     onAction="#backToLogin" text="Return to login"/>
             <Button layoutX="329.0" layoutY="339.0" mnemonicParsing="false" style="-fx-background-color: #f7c19b;"
-                    onAction="#registerUserToApplication" text="Register">
+                    onAction="#addCreditCard" text="Register">
                 <effect>
                     <Reflection/>
                 </effect>

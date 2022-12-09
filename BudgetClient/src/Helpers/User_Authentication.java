@@ -1,34 +1,34 @@
 package Helpers;
 
-import Server.Server;
+import DB.Conn;
 
-import java.rmi.RemoteException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class User_Authentication {
+
     public static int uid = -1;
-    private static final ResultSet resultSet = null;
+    private static ResultSet resultSet = null;
+    private static Conn conn;
 
-    public static int isValid(String user_login, String pass) throws RemoteException {
-        Server s = new Server();
-        String sql = "SELECT * FROM users WHERE \"User\" = " + "'" + user_login + "'" + "AND \"Password\" = " + "'" + pass + "'";
 
-        return 0;
-    }
-}
 
-       /*// try {
-            PreparedStatement stmt = s.getConnection().prepareStatement(sql);
-            ResultSet sqlReturnValues = stmt.executeQuery();
+    public static int isValid(String name, String pass) {
+        conn = Conn.getInstance();
 
-            while (sqlReturnValues.next()) {
-                uid = sqlReturnValues.getInt("user_login");
+        String sql = "SELECT * FROM users WHERE email = " + "'" + name + "'" + " AND password = " + "'" + pass + "'";
+
+        try {
+            ResultSet rs = conn.query(sql);
+            while (rs.next()) {
+                uid = rs.getInt("id");
             }
+
             return uid;
         } catch (SQLException se) {
             se.printStackTrace();
         }
         return uid;
-    }*/
+    }
+}
