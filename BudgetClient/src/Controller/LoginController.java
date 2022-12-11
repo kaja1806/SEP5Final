@@ -1,6 +1,6 @@
 package Controller;
 
-import Helpers.User_Authentication;
+import DB.User_Authentication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,12 +24,14 @@ public class LoginController {
     public Label error;
     public PasswordField password;
 
+    public int uid;
+
     @FXML
     public void handleLogin(ActionEvent event) {
         String name = username.getText();
         String pass = password.getText();
 
-        int uid = User_Authentication.isValid(name, pass);
+        uid = User_Authentication.isValid(name, pass);
 
         if (uid != 0) {
             goToOverview(event);
@@ -40,7 +42,6 @@ public class LoginController {
             a1.show();
         }
     }
-
     public void goToOverview(ActionEvent event) {
         try {
             Stage stage = new Stage();

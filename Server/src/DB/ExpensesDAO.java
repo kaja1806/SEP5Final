@@ -7,6 +7,9 @@ import javafx.scene.chart.PieChart;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import static DB.User_Authentication.userModel;
+
+
 public class ExpensesDAO {
     private Conn conn;
 
@@ -16,7 +19,7 @@ public class ExpensesDAO {
 
         ObservableList<PieChart.Data> allExpenses = FXCollections.observableArrayList();
 
-        String sql = "SELECT amount, userid, categoryname FROM expenses";
+        String sql = "SELECT amount, userid, categoryname FROM expenses WHERE userid =" + userModel.getUserID() + ";";
 
         try {
             ResultSet rs = conn.query(sql);

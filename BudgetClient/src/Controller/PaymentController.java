@@ -21,6 +21,7 @@ public class PaymentController {
     public Button registerPayment;
     public TextField amountField;
     public ComboBox Categories;
+    public Button goToOverview;
 
     CategoryDAO ca = new CategoryDAO();
 

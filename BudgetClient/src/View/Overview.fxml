@@ -4,36 +4,39 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.OverviewController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.OverviewController">
     <children>
         <TableView fx:id="statusTable" layoutX="347.0" layoutY="79.0" prefHeight="257.0" prefWidth="235.0">
             <columns>
-                <TableColumn fx:id="amount" prefWidth="119.3333740234375" text="Amount" />
-                <TableColumn fx:id="category" prefWidth="114.0" text="Category" />
+                <TableColumn fx:id="amount" prefWidth="119.3333740234375" text="Amount"/>
+                <TableColumn fx:id="category" prefWidth="114.0" text="Category"/>
             </columns>
         </TableView>
-        <Button fx:id="statusBtn" layoutX="414.0" layoutY="348.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="101.0" text="Show Status" />
-        <PieChart fx:id="pieChart" layoutX="40.0" layoutY="79.0" prefHeight="307.0" prefWidth="287.0" />
-      <MenuBar layoutX="370.0" layoutY="8.0" prefHeight="25.0" prefWidth="189.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="Settings">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Account" />
-                  <MenuItem mnemonicParsing="false" text="Card" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Add">
-            <items>
-              <MenuItem mnemonicParsing="false" text="New user" />
-                  <MenuItem mnemonicParsing="false" text="New card" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Premium">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
+        <Button fx:id="statusBtn" layoutX="414.0" layoutY="348.0" mnemonicParsing="false" prefHeight="26.0"
+                prefWidth="101.0" text="Show Status"/>
+        <PieChart fx:id="pieChart" layoutX="40.0" layoutY="79.0" prefHeight="307.0" prefWidth="287.0"/>
+        <MenuBar layoutX="370.0" layoutY="8.0" prefHeight="25.0" prefWidth="189.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="Settings">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Account"/>
+                        <MenuItem mnemonicParsing="false" text="Card"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Add">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="New user"/>
+                        <MenuItem mnemonicParsing="false" text="New card"/>
+                        <MenuItem mnemonicParsing="false" text="New expense" onAction="#makePayment"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Premium">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
     </children>
 </AnchorPane>

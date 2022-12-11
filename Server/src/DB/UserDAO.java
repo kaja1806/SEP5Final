@@ -6,7 +6,7 @@ import Model.UserModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static Helpers.User_Authentication.userModel;
+import static DB.User_Authentication.userModel;
 
 public class UserDAO {
 

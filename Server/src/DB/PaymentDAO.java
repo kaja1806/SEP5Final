@@ -4,10 +4,11 @@ import Model.UserModel;
 
 import java.sql.SQLException;
 
+import static DB.User_Authentication.userModel;
+
 public class PaymentDAO {
 
     private Conn conn;
-    public UserModel.RegistrationModel userModel;
 
     public String addPayment(String categoryName, int amount) {
         conn = Conn.getInstance();
