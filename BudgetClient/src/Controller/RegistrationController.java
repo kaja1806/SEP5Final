@@ -48,7 +48,7 @@ public class RegistrationController {
 
         try {
             Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("/View/Overview.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/View/CreditCard.fxml"));
             stage.setTitle("Overview");
             stage.setScene(new Scene(root));
             stage.show();
@@ -65,7 +65,9 @@ public class RegistrationController {
             NameOfBank.setValue("");
         }
 
-        UserModel.RegistrationModel inputRegData = new UserModel.RegistrationModel(FirstName.getText(), LastName.getText(), Email.getText(), Address.getText(), PhoneNr.getText(), Password.getText(), PasswordConfirmation.getText(), NameOfBank.getValue().toString());
+        UserModel.RegistrationModel inputRegData = new UserModel.RegistrationModel(FirstName.getText(),
+                LastName.getText(), Email.getText(), Address.getText(), PhoneNr.getText(), Password.getText(),
+                PasswordConfirmation.getText(), NameOfBank.getValue().toString());
 
         UserDAO userDAO = new UserDAO();
 
@@ -74,13 +76,16 @@ public class RegistrationController {
             if (inputRegData.Password.equals(inputRegData.PasswordConfirmation)) {
                 String temp = userDAO.createUser(inputRegData);
                 if (temp.equals("User added")) {
-                    Alert a1 = new Alert(Alert.AlertType.INFORMATION, "User " + FirstName.getText() + " has been added!", ButtonType.OK);
-                    a1.show();
                     //Show another view
                     handleRegistration(event);
 
+                    Alert a1 = new Alert(Alert.AlertType.INFORMATION, "User " + FirstName.getText() + " has been " +
+                            "added!", ButtonType.OK);
+                    a1.show();
+
                 } else if (temp.equals("Duplicate key")) {
-                    Alert a1 = new Alert(Alert.AlertType.INFORMATION, "User " + FirstName.getText() + " already exists!", ButtonType.OK);
+                    Alert a1 = new Alert(Alert.AlertType.INFORMATION, "User " + FirstName.getText() + " already " +
+                            "exists!", ButtonType.OK);
                     a1.show();
                 } else {
                     Alert a1 = new Alert(Alert.AlertType.INFORMATION, "Error 404", ButtonType.OK);
@@ -96,21 +101,7 @@ public class RegistrationController {
         }
     }
 
-    public void addCreditCard(ActionEvent event) {
-        try {
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("/View/CreditCard.fxml"));
-            stage.setTitle("Add credit card");
-            stage.setScene(new Scene(root));
-            stage.show();
-            ((Node) (event.getSource())).getScene().getWindow().hide();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void backToLogin(ActionEvent event) {
-
         try {
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("/View/Login.fxml"));

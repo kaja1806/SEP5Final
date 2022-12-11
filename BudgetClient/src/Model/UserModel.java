@@ -1,10 +1,6 @@
 package Model;
 
-import javafx.scene.control.ComboBox;
-
-import javax.swing.*;
 import java.io.Serializable;
-import java.util.List;
 
 public class UserModel {
 
@@ -17,9 +13,25 @@ public class UserModel {
         public String PhoneNr;
         public String Password;
         public String PasswordConfirmation;
+        public int UserID = 0;
+
+        public RegistrationModel() {
+
+        }
+
+        public int getUserID() {
+            return UserID;
+        }
+
+        public void setUserID(int userID) {
+            UserID = userID;
+        }
+
+        public int Income;
 
 
-        public RegistrationModel(String firstName, String lastName, String email, String address, String phoneNr, String password, String passwordConfirmation, String nameOfBank) {
+        public RegistrationModel(String firstName, String lastName, String email, String address, String phoneNr,
+                                 String password, String passwordConfirmation, String nameOfBank) {
             FirstName = firstName;
             LastName = lastName;
             Email = email;
@@ -57,46 +69,9 @@ public class UserModel {
         public String getNameOfBank() {
             return NameOfBank;
         }
-    }
 
-    public class LoginModel {
-        private String email;
-        private String name;
-        private String password;
-
-        public LoginModel() {
-
+        public int getIncome() {
+            return Income;
         }
-
-        public LoginModel(String email, String name, String password) {
-            this.email = email;
-            this.name = name;
-            this.password = password;
-        }
-
-        public String getEmail() {
-            return email;
-        }
-
-        public void setEmail(String email) {
-            this.email = email;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
-
     }
 }

@@ -1,52 +1,50 @@
+package Controller;
 
-    /*public Button paymentBtn;
-    public TableColumn<Payment, String> paymentDate;
-    public TableColumn<Payment, Integer> paymentAmount;
-    public TableView<Payment> paymentTable;
-    private Model.OverviewModel OverviewModel;
-    private Object model;*/
+import DB.ExpensesDAO;
+import Model.OverviewModel;
+
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 
-/*    public void updatePie() {
-        ObservableList<PieChart.Data> pieChartData =
-                FXCollections.observableArrayList(new PieChart.Data("Food - " + model.),
-                        new PieChart.Data("Transport - " + model.),
-                        new PieChart.Data("Grocery - " + model.),
-                        new PieChart.Data("Night life- " + model.));
+public class OverviewController {
+    public PieChart pieChart;
+    public Button statusBtn;
+    public TableColumn<OverviewModel, Integer> amount;
+    public TableColumn<OverviewModel, String> category;
 
-        pieChart.setData(pieChartData);
-        pieChart.setLabelsVisible(false);
+    ExpensesDAO ex = new ExpensesDAO();
 
-        for (PieChart.Data data : pieChart.getData()) {
-            data.getNode().addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
+    public void initialize() {
+        ObservableList<PieChart.Data> data = ex.getAllExpenses();
+        pieChart.getData().addAll(data);
+    }
 
-                    updatePie();
-                    showAllStatues();
-                }
 
-                private void showAllStatues() {
-                }
-            });
+    public void makePayment(ActionEvent event) {
+        try {
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("/View/Payment.fxml"));
+            stage.setTitle("Registration");
+            stage.setScene(new Scene(root));
+            stage.show();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
-    */
 
-//    public void makePayment(ActionEvent event) {
-//
-//        try {
-//            Stage stage = new Stage();
-//            Parent root = FXMLLoader.load(getClass().getResource("/View/Payment.fxml"));
-//            stage.setTitle("Registration");
-//            stage.setScene(new Scene(root));
-//            stage.show();
-//            ((Node) (event.getSource())).getScene().getWindow().hide();
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//    }
-//}
+
+}
 

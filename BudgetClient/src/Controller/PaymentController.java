@@ -6,15 +6,18 @@ import Model.Category;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
-import java.util.List;
+import java.io.IOException;
 
 public class PaymentController {
-
     public Button registerPayment;
     public TextField amountField;
     public ComboBox Categories;
@@ -40,7 +43,19 @@ public class PaymentController {
         PaymentDAO payment = new PaymentDAO();
 
         payment.addPayment(categoryName, amount);
+    }
 
+    public void goToOverview(ActionEvent event) {
+        try {
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("/View/Overview.fxml"));
+            stage.setTitle("Overview");
+            stage.setScene(new Scene(root));
+            stage.show();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

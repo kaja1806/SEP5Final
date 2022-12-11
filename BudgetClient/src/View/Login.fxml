@@ -6,49 +6,59 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controller.LoginController">
     <left>
-        <AnchorPane prefHeight="410.0" prefWidth="230.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="410.0" prefWidth="230.0" style="-fx-background-color: #ffffff;"
+                    BorderPane.alignment="CENTER">
             <children>
-                <Circle fill="#cfccc2" layoutX="115.0" layoutY="193.0" radius="100.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="3.0" />
-                <Text fill="WHITE" layoutX="53.0" layoutY="197.0" stroke="#f7c19b" strokeType="OUTSIDE" strokeWidth="2.0" text="PIGGY" textAlignment="CENTER" wrappingWidth="124.13671875">
+                <Circle fill="#cfccc2" layoutX="115.0" layoutY="193.0" radius="100.0" stroke="WHITE" strokeType="INSIDE"
+                        strokeWidth="3.0"/>
+                <Text fill="WHITE" layoutX="53.0" layoutY="197.0" stroke="#f7c19b" strokeType="OUTSIDE"
+                      strokeWidth="2.0" text="PIGGY" textAlignment="CENTER" wrappingWidth="124.13671875">
                     <font>
-                        <Font size="36.0" />
+                        <Font size="36.0"/>
                     </font>
                     <effect>
-                        <DropShadow />
+                        <DropShadow/>
                     </effect>
                 </Text>
-                <Text layoutX="72.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mobile App" textAlignment="CENTER" wrappingWidth="85.13671875" />
+                <Text layoutX="72.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mobile App"
+                      textAlignment="CENTER" wrappingWidth="85.13671875"/>
             </children>
         </AnchorPane>
     </left>
     <right>
-        <AnchorPane prefHeight="400.0" prefWidth="380.0" style="-fx-background-color: #f7c19b;" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="400.0" prefWidth="380.0" style="-fx-background-color: #f7c19b;"
+                    BorderPane.alignment="CENTER">
             <children>
                 <Text fill="WHITE" layoutX="97.0" layoutY="89.0" stroke="#8c5117" strokeType="OUTSIDE" text="WELCOME!">
                     <font>
-                        <Font size="35.0" />
+                        <Font size="35.0"/>
                     </font>
                 </Text>
-                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="128.0" layoutX="37.0" layoutY="128.0" stroke="BLACK" strokeType="INSIDE" width="275.0" />
-                <TextField fx:id="username" layoutX="41.0" layoutY="164.0" text="Username">
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="128.0" layoutX="37.0" layoutY="128.0"
+                           stroke="BLACK" strokeType="INSIDE" width="275.0"/>
+                <TextField fx:id="username" layoutX="65.0" layoutY="153.0" text="Username">
                     <font>
-                        <Font size="14.0" />
+                        <Font size="14.0"/>
                     </font>
                 </TextField>
-                <PasswordField fx:id="password" layoutX="43.0" layoutY="213.0" text="Password">
+                <PasswordField fx:id="password" layoutX="65.0" layoutY="200.0" text="Password">
                     <font>
-                        <Font size="14.0" />
+                        <Font size="14.0"/>
                     </font>
                 </PasswordField>
-                <Button layoutX="261.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleLogin" text="Login" />
-                <Text layoutX="38.0" layoutY="330.0" stroke="#df8b8b" strokeType="OUTSIDE" strokeWidth="0.5" text="Not a member yet? " wrappingWidth="129.1806640625">
+                <Button layoutX="261.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleLogin" text="Login"/>
+                <Text layoutX="38.0" layoutY="330.0" stroke="#df8b8b" strokeType="OUTSIDE" strokeWidth="0.5"
+                      text="Not a member yet? " wrappingWidth="129.1806640625">
                     <font>
-                        <Font size="14.0" />
+                        <Font size="14.0"/>
                     </font>
                 </Text>
-                <Button layoutX="198.0" layoutY="312.0" mnemonicParsing="false" onAction="#goToRegistration" text="Register" />
+                <Button layoutX="198.0" layoutY="312.0" mnemonicParsing="false" onAction="#goToRegistration"
+                        text="Register"/>
             </children>
         </AnchorPane>
     </right>
