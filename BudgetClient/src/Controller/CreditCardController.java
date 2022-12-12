@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -24,6 +25,7 @@ public class CreditCardController {
     public TextField Cardnickname;
     public Button Addeditcard;
     public Button backbutton;
+    public Text topText;
 
     UserDAO userDAO = new UserDAO();
 
@@ -126,6 +128,7 @@ public class CreditCardController {
         ObservableList<String> data = FXCollections.observableArrayList();
         Addeditcard.setText("Edit Card");
         backbutton.setText("Go to Overview");
+        topText.setText("Edit card");
 
         for (UserCardModel card : userCardModel) {
             CardholderName.setText(card.getCardholderName());

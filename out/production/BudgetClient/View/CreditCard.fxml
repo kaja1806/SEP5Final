@@ -16,7 +16,7 @@
     </left>
     <center>
         <AnchorPane prefHeight="200.0" prefWidth="450.0" BorderPane.alignment="CENTER">
-            <Text layoutX="37.0" layoutY="45.0" stroke="#bfbaba" strokeType="OUTSIDE" text="Add new card">
+            <Text fx:id="topText" layoutX="37.0" layoutY="45.0" stroke="#bfbaba" strokeType="OUTSIDE" text="Add new card">
                 <font>
                     <Font size="20.0"/>
                 </font>
