@@ -13,20 +13,14 @@ import static DB.User_Authentication.userModel;
 
 public class UserDAO {
 
-    private Conn conn;
     private static final ResultSet resultSet = null;
+    private Conn conn;
 
     public String createUser(UserModel.RegistrationModel registrationModel) {
         conn = Conn.getInstance();
         UserModel.RegistrationModel userModel = new UserModel.RegistrationModel();
-        String sql = "INSERT INTO users(firstname,lastname,email,address,phonenr,password,nameofbank) " +
-                "values('" + registrationModel.getFirstName() + "','"
-                + registrationModel.getLastName() + "','"
-                + registrationModel.getEmail() + "','"
-                + registrationModel.getAddress() + "','"
-                + registrationModel.getPhoneNr() + "','"
-                + registrationModel.getPassword() + "','"
-                + registrationModel.getNameOfBank() + "');";
+        String sql =
+                "INSERT INTO users(firstname,lastname,email,address,phonenr,password,nameofbank) " + "values('" + registrationModel.getFirstName() + "','" + registrationModel.getLastName() + "','" + registrationModel.getEmail() + "','" + registrationModel.getAddress() + "','" + registrationModel.getPhoneNr() + "','" + registrationModel.getPassword() + "','" + registrationModel.getNameOfBank() + "');";
         String sqlgetuser = "SELECT * FROM users WHERE email = " + "'" + registrationModel.getEmail() + "'";
 
         try {
@@ -48,13 +42,9 @@ public class UserDAO {
     public String createCard(UserCardModel userCard, int income) {
         conn = Conn.getInstance();
 
-        String sql = "INSERT INTO usercard(cardholdername,cardnumber,validdate,cvc,userid,cardnickname) " +
-                "values('" + userCard.getCardholderName() + "','"
-                + userCard.getCardNumber() + "','"
-                + userCard.getValidDate() + "','"
-                + userCard.getCvc() + "','"
-                + userModel.getUserID() + "','"
-                + userCard.getCardNickname() + "');";
+        String sql =
+                "INSERT INTO usercard(cardholdername,cardnumber,validdate,cvc,userid,cardnickname) " + "values" +
+                        "('" + userCard.getCardholderName() + "','" + userCard.getCardNumber() + "','" + userCard.getValidDate() + "','" + userCard.getCvc() + "','" + userModel.getUserID() + "','" + userCard.getCardNickname() + "');";
         String sql2 = "UPDATE users SET income = " + income + " WHERE id =" + userModel.getUserID() + ";";
         try {
             conn.update(sql);
@@ -72,16 +62,10 @@ public class UserDAO {
     public String updateCard(UserCardModel userCard, int income) {
         conn = Conn.getInstance();
 
-        String sql = "UPDATE usercard SET " +
-                "cardholdername = " + "'" + userCard.getCardholderName() + "'," + " " +
-                "cardnumber = " + userCard.getCardNumber() + "," + " " +
-                "validdate = " + "'" + userCard.getValidDate() + "'," + " " +
-                "cvc = " +  userCard.getCvc() + "," + " " +
-                "cardnickname = " + "'" + userCard.getCardNickname() + "'" + " " +
-                "WHERE userid =" + userModel.getUserID() +  ";";
-        String sql2 = "UPDATE users SET " +
-                "income = " + income + " " +
-                "WHERE id =" + userModel.getUserID() + ";";
+        String sql =
+                "UPDATE usercard SET " + "cardholdername = " + "'" + userCard.getCardholderName() + "'," + " " +
+                        "cardnumber = " + userCard.getCardNumber() + "," + " " + "validdate = " + "'" + userCard.getValidDate() + "'," + " " + "cvc = " + userCard.getCvc() + "," + " " + "cardnickname = " + "'" + userCard.getCardNickname() + "'" + " " + "WHERE userid =" + userModel.getUserID() + ";";
+        String sql2 = "UPDATE users SET " + "income = " + income + " " + "WHERE id =" + userModel.getUserID() + ";";
         try {
             conn.update(sql);
             conn.update(sql2);
@@ -95,11 +79,12 @@ public class UserDAO {
         return "Card Edited";
     }
 
-    public ObservableList<UserCardModel> ifCardExistsPerUser(){
+    public ObservableList<UserCardModel> ifCardExistsPerUser() {
         conn = Conn.getInstance();
         ObservableList<UserCardModel> allCardsPerUser = FXCollections.observableArrayList();
 
-        String sql = "SELECT cardholdername,cardnumber,validdate,cvc,userid,cardnickname FROM usercard WHERE userid= "+ userModel.getUserID() + ";";
+        String sql = "SELECT cardholdername,cardnumber,validdate,cvc,userid,cardnickname FROM usercard WHERE userid= "
+                + userModel.getUserID() + ";";
         try {
             ResultSet rs = conn.query(sql);
             while (rs.next()) {
@@ -108,7 +93,7 @@ public class UserDAO {
                 LocalDate valid = rs.getDate("validdate").toLocalDate();
                 int cvc = rs.getInt("cvc");
                 String nickname = rs.getString("cardnickname");
-                allCardsPerUser.add(new UserCardModel(name,number,valid,cvc,nickname));
+                allCardsPerUser.add(new UserCardModel(name, number, valid, cvc, nickname));
             }
             return allCardsPerUser;
 
@@ -116,5 +101,21 @@ public class UserDAO {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public int getIncomePerUser() {
+        conn = Conn.getInstance();
+        int income = 0;
+        String sql = "SELECT income FROM users WHERE id= " + userModel.getUserID() + ";";
+        try {
+            ResultSet rs = conn.query(sql);
+            while (rs.next()) {
+                income = rs.getInt("income");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return income;
     }
 }

@@ -29,9 +29,10 @@ public class CreditCardController {
 
     public void initialize() {
         ObservableList<UserCardModel> cards = userDAO.ifCardExistsPerUser();
+        int userIncome = userDAO.getIncomePerUser();
 
         if (cards != null) {
-            displayUserCard(cards);
+            displayUserCard(cards, userIncome);
         }
     }
 
@@ -73,7 +74,7 @@ public class CreditCardController {
 
         String cvc = Cvc.getText();
         String income = EstimatedIncome.getText();
-        if (income.equals("") || cvc.equals("")){
+        if (income.equals("") || cvc.equals("")) {
             cvc = String.valueOf(0);
             income = String.valueOf(0);
         }
@@ -105,7 +106,8 @@ public class CreditCardController {
                 if (temp.equals("Card Edited")) {
                     //Show another view
                     ObservableList<UserCardModel> cards = userDAO.ifCardExistsPerUser();
-                    displayUserCard(cards);
+                    int userIncome = userDAO.getIncomePerUser();
+                    displayUserCard(cards, userIncome);
                     Alert a1 = new Alert(Alert.AlertType.INFORMATION, "Card has been " + "edited!", ButtonType.OK);
                     a1.show();
 
@@ -120,9 +122,10 @@ public class CreditCardController {
         }
     }
 
-    public void displayUserCard(ObservableList<UserCardModel> userCardModel) {
+    public void displayUserCard(ObservableList<UserCardModel> userCardModel, int userIncome) {
         ObservableList<String> data = FXCollections.observableArrayList();
         Addeditcard.setText("Edit Card");
+        backbutton.setText("Go to Overview");
 
         for (UserCardModel card : userCardModel) {
             CardholderName.setText(card.getCardholderName());
@@ -130,6 +133,7 @@ public class CreditCardController {
             ValidDate.setValue(card.getValidDate());
             Cvc.setText(String.valueOf(card.getCvc()));
             Cardnickname.setText(card.getCardNickname());
+            EstimatedIncome.setText(String.valueOf(userIncome));
             backbutton.setOnAction(event -> goToOverview(event));
             /*data.add(card.CardNickname);
             Cardnicknamedropdown.setItems(data);*/

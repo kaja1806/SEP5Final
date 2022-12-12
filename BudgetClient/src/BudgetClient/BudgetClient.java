@@ -7,7 +7,7 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
-public class BudgetClient implements IBudgetClient {
+public class BudgetClient {
     private final IServer sInterfaceM;
 
     public BudgetClient() throws RemoteException, NotBoundException, MalformedURLException {
