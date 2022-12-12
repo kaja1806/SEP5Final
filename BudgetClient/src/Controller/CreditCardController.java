@@ -2,7 +2,8 @@ package Controller;
 
 import DB.UserDAO;
 import Model.UserCardModel;
-import com.sun.javafx.scene.control.IntegerField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -19,6 +20,20 @@ public class CreditCardController {
     public TextField Cvc;
     public TextField CardholderName;
     public TextField EstimatedIncome;
+    public ComboBox Cardnicknamedropdown;
+    public TextField Cardnickname;
+    public Button Addeditcard;
+    public Button backbutton;
+
+    UserDAO userDAO = new UserDAO();
+
+    public void initialize() {
+        ObservableList<UserCardModel> cards = userDAO.ifCardExistsPerUser();
+
+        if (cards != null) {
+            displayUserCard(cards);
+        }
+    }
 
     public void backToLogin(ActionEvent event) {
 
@@ -50,36 +65,74 @@ public class CreditCardController {
         }
     }
 
+    public void ifCardExists(ActionEvent event) {
+        addCardToUser(event);
+    }
+
     public void addCardToUser(ActionEvent event) {
 
         String cvc = Cvc.getText();
         String income = EstimatedIncome.getText();
+        if (income.equals("") || cvc.equals("")){
+            cvc = String.valueOf(0);
+            income = String.valueOf(0);
+        }
         int cvcParse = Integer.parseInt(cvc);
         int incomeParse = Integer.parseInt(income);
 
         UserCardModel cardInput = new UserCardModel(CardholderName.getText(), CardNumber.getText(),
-                ValidDate.getValue(), cvcParse);
+                ValidDate.getValue(), cvcParse, Cardnickname.getText());
 
         UserDAO userDAO = new UserDAO();
 
 
         if (!(cardInput.CardholderName.isEmpty() || cardInput.getCardNumber().isEmpty() || cardInput.ValidDate == null || cvc.isEmpty())) {
-            String temp = userDAO.createCard(cardInput, incomeParse);
-            if (temp.equals("Card Added")) {
-                //Show another view
-                goToOverview(event);
+            if (userDAO.ifCardExistsPerUser() == null) {
+                String temp = userDAO.createCard(cardInput, incomeParse);
+                if (temp.equals("Card Added")) {
+                    //Show another view
+                    goToOverview(event);
 
-                Alert a1 = new Alert(Alert.AlertType.INFORMATION, "Card has been " + "added!", ButtonType.OK);
-                a1.show();
+                    Alert a1 = new Alert(Alert.AlertType.INFORMATION, "Card has been " + "added!", ButtonType.OK);
+                    a1.show();
 
+                } else {
+                    Alert a1 = new Alert(Alert.AlertType.INFORMATION, "Error 404", ButtonType.OK);
+                    a1.show();
+                }
             } else {
-                Alert a1 = new Alert(Alert.AlertType.INFORMATION, "Error 404", ButtonType.OK);
-                a1.show();
-            }
+                String temp = userDAO.updateCard(cardInput, incomeParse);
+                if (temp.equals("Card Edited")) {
+                    //Show another view
+                    ObservableList<UserCardModel> cards = userDAO.ifCardExistsPerUser();
+                    displayUserCard(cards);
+                    Alert a1 = new Alert(Alert.AlertType.INFORMATION, "Card has been " + "edited!", ButtonType.OK);
+                    a1.show();
 
+                } else {
+                    Alert a1 = new Alert(Alert.AlertType.INFORMATION, "Error 404", ButtonType.OK);
+                    a1.show();
+                }
+            }
         } else {
             Alert a1 = new Alert(Alert.AlertType.INFORMATION, "All of the fields should be filled", ButtonType.OK);
             a1.show();
+        }
+    }
+
+    public void displayUserCard(ObservableList<UserCardModel> userCardModel) {
+        ObservableList<String> data = FXCollections.observableArrayList();
+        Addeditcard.setText("Edit Card");
+
+        for (UserCardModel card : userCardModel) {
+            CardholderName.setText(card.getCardholderName());
+            CardNumber.setText(card.getCardNumber());
+            ValidDate.setValue(card.getValidDate());
+            Cvc.setText(String.valueOf(card.getCvc()));
+            Cardnickname.setText(card.getCardNickname());
+            backbutton.setOnAction(event -> goToOverview(event));
+            /*data.add(card.CardNickname);
+            Cardnicknamedropdown.setItems(data);*/
         }
     }
 }

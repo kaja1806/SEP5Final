@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AboutController">
+        <left>
+            <AnchorPane prefHeight="410.0" prefWidth="230.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
+                <children>
+                    <Circle fill="#cfccc2" layoutX="115.0" layoutY="193.0" radius="100.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="3.0" />
+                    <Text fill="WHITE" layoutX="53.0" layoutY="197.0" stroke="#f7c19b" strokeType="OUTSIDE" strokeWidth="2.0" text="PIGGY" textAlignment="CENTER" wrappingWidth="124.13671875">
+                        <font>
+                            <Font size="36.0" />
+                        </font>
+                        <effect>
+                            <DropShadow />
+                        </effect>
+                    </Text>
+                    <Text layoutX="72.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mobile App" textAlignment="CENTER" wrappingWidth="85.13671875" />
+                </children>
+            </AnchorPane>
+        </left>
+        <right>
+            <AnchorPane prefHeight="400.0" prefWidth="380.0" style="-fx-background-color: #f7c19b;" BorderPane.alignment="CENTER">
+                <children>
+                    <Text fill="WHITE" layoutX="75.0" layoutY="84.0" stroke="#8c5117" strokeType="OUTSIDE" text="PIGGY Premium Plus ">
+                        <font>
+                            <Font size="35.0" />
+                        </font>
+                    </Text>
+                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="128.0" layoutX="66.0" layoutY="151.0" stroke="BLACK" strokeType="INSIDE" width="275.0" />
+                    <Text layoutX="47.0" layoutY="330.0" stroke="#df8b8b" strokeType="OUTSIDE" strokeWidth="0.5" text="Not a member yet? " wrappingWidth="129.1806640625">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                    </Text>
+                    <Button layoutX="198.0" layoutY="312.0" mnemonicParsing="false" text="Register" />
+                    <MenuBar layoutX="323.0" layoutY="8.0" prefHeight="25.0" prefWidth="264.0">
+                        <menus>
+                            <Menu mnemonicParsing="false" text="Overview">
+                            </Menu>
+                            <Menu mnemonicParsing="false" text="Settings">
+                                <items>
+                                    <MenuItem mnemonicParsing="false" text="Account" />
+                                    <MenuItem mnemonicParsing="false" text="Card" />
+                                </items>
+                            </Menu>
+                            <Menu mnemonicParsing="false" text="Add">
+                                <items>
+                                    <MenuItem mnemonicParsing="false" text="New user" />
+                                    <MenuItem mnemonicParsing="false" text="New card" />
+                                    <MenuItem mnemonicParsing="false" text="New expense" />
+                                </items>
+                            </Menu>
+                            <Menu mnemonicParsing="false" text="Premium">
+                                <items>
+                                    <MenuItem mnemonicParsing="false" text="About" />
+                                </items>
+                            </Menu>
+                        </menus>
+                    </MenuBar>
+            <Text layoutX="66.0" layoutY="112.0" stroke="#df8b8b" strokeType="OUTSIDE" strokeWidth="0.5" text="Exclusive options which will help you manage your budget" wrappingWidth="303.18064880371094">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="75.0" layoutY="181.0" stroke="#df8b8b" strokeType="OUTSIDE" strokeWidth="0.5" text="Option 1 plus price" wrappingWidth="129.1806640625">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+                </children>
+            </AnchorPane>
+        </right>
+    </BorderPane>

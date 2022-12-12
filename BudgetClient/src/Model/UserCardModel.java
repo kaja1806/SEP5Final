@@ -7,12 +7,22 @@ public class UserCardModel {
     public String CardNumber;
     public LocalDate ValidDate;
     public int Cvc;
+    public String CardNickname;
 
-    public UserCardModel(String cardholderName, String cardNumber, LocalDate validDate, int cvc) {
+    public UserCardModel(String cardholderName, String cardNumber, LocalDate validDate, int cvc, String cardNickname) {
         CardholderName = cardholderName;
         CardNumber = cardNumber;
         ValidDate = validDate;
         Cvc = cvc;
+        CardNickname = cardNickname;
+    }
+
+    public String getCardNickname() {
+        return CardNickname;
+    }
+
+    public void setCardNickname(String cardNickname) {
+        CardNickname = cardNickname;
     }
 
     public void setCardholderName(String cardholderName) {
