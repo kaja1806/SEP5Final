@@ -21,10 +21,8 @@ public class CategoryDAO {
         try {
             ResultSet rs = conn.query(sql);
             while (rs.next()) {
-
                 String categoryName = rs.getString("categoryname");
                 allCategories.add(new Category(categoryName));
-
             }
         } catch (SQLException e) {
             e.printStackTrace();

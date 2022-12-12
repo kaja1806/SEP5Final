@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -19,8 +20,7 @@ import java.io.IOException;
 public class OverviewController {
     public PieChart pieChart;
     public Button statusBtn;
-    public TableColumn<OverviewModel, Integer> amount;
-    public TableColumn<OverviewModel, String> category;
+    public AnchorPane border;
 
     ExpensesDAO ex = new ExpensesDAO();
 
@@ -29,9 +29,6 @@ public class OverviewController {
         pieChart.getData().addAll(data);
     }
 
-
-
-
     public void makePayment() {
         try {
             Stage stage = new Stage();
@@ -39,6 +36,8 @@ public class OverviewController {
             stage.setTitle("Registration");
             stage.setScene(new Scene(root));
             stage.show();
+            border.getScene().getWindow().hide();
+
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -52,6 +51,8 @@ public class OverviewController {
             stage.setTitle("Credit Card");
             stage.setScene(new Scene(root));
             stage.show();
+            border.getScene().getWindow().hide();
+
         } catch (IOException e) {
             e.printStackTrace();
         }

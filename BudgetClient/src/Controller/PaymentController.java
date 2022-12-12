@@ -10,9 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -42,8 +40,9 @@ public class PaymentController {
         int amount = Integer.parseInt(amountField.getText());
         String categoryName = Categories.getValue().toString();
         PaymentDAO payment = new PaymentDAO();
-
-        payment.addPayment(categoryName, amount);
+        String paymentResponse = payment.addPayment(categoryName, amount);
+        Alert a1 = new Alert(Alert.AlertType.INFORMATION, paymentResponse, ButtonType.OK);
+        a1.show();
     }
 
     public void goToOverview(ActionEvent event) {
