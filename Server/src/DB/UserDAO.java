@@ -9,10 +9,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
+import static DB.User_Authentication.userModel;
+
+
 public class UserDAO {
 
     private static final ResultSet resultSet = null;
-    UserModel.RegistrationModel userModel = new UserModel.RegistrationModel();
 
     private Conn conn;
 

@@ -7,119 +7,102 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-            prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="Controller.CreditCardController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CreditCardController">
     <left>
-        <AnchorPane prefHeight="200.0" prefWidth="150.0" style="-fx-background-color: #f7c19b;"
-                    BorderPane.alignment="CENTER"/>
+        <AnchorPane prefHeight="200.0" prefWidth="150.0" style="-fx-background-color: #f7c19b;" BorderPane.alignment="CENTER" />
     </left>
     <center>
         <AnchorPane prefHeight="200.0" prefWidth="450.0" BorderPane.alignment="CENTER">
-            <Text fx:id="topText" layoutX="37.0" layoutY="45.0" stroke="#bfbaba" strokeType="OUTSIDE"
-                  text="Add new card">
+            <Text fx:id="topText" layoutX="37.0" layoutY="45.0" stroke="#bfbaba" strokeType="OUTSIDE" text="Add new card">
                 <font>
-                    <Font size="20.0"/>
+                    <Font size="20.0" />
                 </font>
             </Text>
-            <Line endX="100.0" layoutX="138.0" layoutY="50.0" startX="-100.0"/>
-            <TextField fx:id="CardNumber" layoutX="38.0" layoutY="86.0" promptText="Card number"/>
-            <DatePicker fx:id="ValidDate" layoutX="238.0" layoutY="86.0" promptText="Expiry date"/>
-            <TextField fx:id="Cvc" layoutX="238.0" layoutY="128.0" promptText="CVC / CVV"/>
-            <TextField fx:id="CardholderName" layoutX="38.0" layoutY="128.0" promptText="Cardholder name"/>
-            <TextField fx:id="EstimatedIncome" layoutX="238.0" layoutY="163.0" promptText="Estimated income"/>
-            <ComboBox fx:id="Cardnicknamedropdown" layoutX="254.0" layoutY="24.0" prefWidth="150.0"
-                      promptText="Choose card"/>
-            <TextField fx:id="Cardnickname" layoutX="38.0" layoutY="163.0" promptText="Card Nickname"/>
-            <Button fx:id="backbutton" layoutX="217.0" layoutY="339.0" mnemonicParsing="false" onAction="#backToLogin"
-                    style="-fx-background-color: #f7c19b;" text="Return to login">
+            <Line endX="100.0" layoutX="138.0" layoutY="50.0" startX="-100.0" />
+            <TextField fx:id="CardNumber" layoutX="38.0" layoutY="86.0" promptText="Card number" />
+            <DatePicker fx:id="ValidDate" layoutX="238.0" layoutY="86.0" promptText="Expiry date" />
+            <TextField fx:id="Cvc" layoutX="238.0" layoutY="128.0" promptText="CVC / CVV" />
+            <TextField fx:id="CardholderName" layoutX="38.0" layoutY="128.0" promptText="Cardholder name" />
+            <TextField fx:id="EstimatedIncome" layoutX="238.0" layoutY="163.0" promptText="Estimated income" />
+            <ComboBox fx:id="Cardnicknamedropdown" layoutX="254.0" layoutY="24.0" prefWidth="150.0" promptText="Choose card" />
+            <TextField fx:id="Cardnickname" layoutX="38.0" layoutY="163.0" promptText="Card Nickname" />
+            <Button fx:id="backbutton" layoutX="197.0" layoutY="339.0" mnemonicParsing="false" onAction="#goToOverview" style="-fx-background-color: #f7c19b;" text="Return to overview">
                 <effect>
-                    <Reflection/>
+                    <Reflection />
                 </effect>
             </Button>
-            <Button fx:id="Addeditcard" layoutX="329.0" layoutY="339.0" mnemonicParsing="false" onAction="#ifCardExists"
-                    style="-fx-background-color: #f7c19b;" text="Add card">
+            <Button fx:id="Addeditcard" layoutX="329.0" layoutY="339.0" mnemonicParsing="false" onAction="#ifCardExists" style="-fx-background-color: #f7c19b;" text="Add card">
                 <effect>
-                    <Reflection/>
+                    <Reflection />
                 </effect>
             </Button>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" height="100.0" layoutX="37.0" layoutY="200.0" stroke="BLACK"
-                       strokeType="INSIDE" width="164.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="100.0" layoutX="37.0" layoutY="200.0" stroke="BLACK" strokeType="INSIDE" width="164.0">
                 <fill>
                     <LinearGradient endX="1.0" endY="1.0">
                         <stops>
                             <Stop>
                                 <color>
-                                    <Color red="0.6491228342056274" green="0.2324019968509674"
-                                           blue="0.2324019968509674"/>
+                                    <Color red="0.6491228342056274" green="0.2324019968509674" blue="0.2324019968509674" />
                                 </color>
                             </Stop>
                             <Stop offset="1.0">
                                 <color>
-                                    <Color red="1.0" green="1.0" blue="1.0"/>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
                                 </color>
                             </Stop>
                         </stops>
                     </LinearGradient>
                 </fill>
             </Rectangle>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" height="100.0" layoutX="255.0" layoutY="200.0" stroke="BLACK"
-                       strokeType="INSIDE" width="164.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="100.0" layoutX="255.0" layoutY="200.0" stroke="BLACK" strokeType="INSIDE" width="164.0">
                 <fill>
                     <LinearGradient endX="1.0" endY="1.0">
                         <stops>
                             <Stop>
                                 <color>
-                                    <Color red="0.12318605184555054" green="0.47196683287620544"
-                                           blue="0.7982456088066101"/>
+                                    <Color red="0.12318605184555054" green="0.47196683287620544" blue="0.7982456088066101" />
                                 </color>
                             </Stop>
                             <Stop offset="1.0">
                                 <color>
-                                    <Color red="1.0" green="1.0" blue="1.0"/>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
                                 </color>
                             </Stop>
                         </stops>
                     </LinearGradient>
                 </fill>
             </Rectangle>
-            <Text layoutX="60.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1234 5678 9010 0010 "/>
+            <Text layoutX="60.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1234 5678 9010 0010 " />
             <Text layoutX="46.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CARDHOLDER NAME">
                 <font>
-                    <Font name="SansSerif Bold" size="8.0"/>
+                    <Font name="SansSerif Bold" size="8.0" />
                 </font>
             </Text>
             <Text layoutX="53.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Steffan Moller">
                 <font>
-                    <Font size="11.0"/>
+                    <Font size="11.0" />
                 </font>
             </Text>
             <Text layoutX="144.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VALID THRU">
                 <font>
-                    <Font name="SansSerif Bold" size="8.0"/>
+                    <Font name="SansSerif Bold" size="8.0" />
                 </font>
             </Text>
             <Text layoutX="155.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="11/28">
                 <font>
-                    <Font size="10.0"/>
+                    <Font size="10.0" />
                 </font>
             </Text>
             <Text layoutX="383.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CVC">
                 <font>
-                    <Font name="SansSerif Bold" size="8.0"/>
+                    <Font name="SansSerif Bold" size="8.0" />
                 </font>
             </Text>
             <Text layoutX="383.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="123">
                 <font>
-                    <Font size="10.0"/>
+                    <Font size="10.0" />
                 </font>
             </Text>
-            <Button layoutX="17.0" layoutY="339.0" mnemonicParsing="false" onAction="#goToOverview"
-                    style="-fx-background-color: #f7c19b;" text="Back">
-                <effect>
-                    <Reflection/>
-                </effect>
-            </Button>
 
         </AnchorPane>
     </center>

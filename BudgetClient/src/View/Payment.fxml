@@ -1,33 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-            prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="Controller.PaymentController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PaymentController">
     <left>
-        <AnchorPane prefHeight="200.0" prefWidth="150.0" style="-fx-background-color: #f7c19b;"
-                    BorderPane.alignment="CENTER"/>
+        <AnchorPane prefHeight="200.0" prefWidth="150.0" style="-fx-background-color: #f7c19b;" BorderPane.alignment="CENTER" />
     </left>
     <center>
         <AnchorPane prefHeight="200.0" prefWidth="450.0" BorderPane.alignment="CENTER">
             <Text layoutX="57.0" layoutY="45.0" stroke="#bfbaba" strokeType="OUTSIDE" text="Add new expense">
                 <font>
-                    <Font size="20.0"/>
+                    <Font size="20.0" />
                 </font>
             </Text>
-            <Line endX="100.0" layoutX="158.0" layoutY="50.0" startX="-100.0"/>
-            <TextField id="AmountField" fx:id="amountField" layoutX="29.0" layoutY="131.0" text="Amount"/>
-            <ComboBox fx:id="Categories" layoutX="222.0" layoutY="131.0" prefHeight="25.0" prefWidth="170.0"
-                      promptText="Choose the category">
+            <Line endX="100.0" layoutX="158.0" layoutY="50.0" startX="-100.0" />
+            <TextField id="AmountField" fx:id="amountField" layoutX="29.0" layoutY="131.0" text="Amount" />
+            <ComboBox fx:id="Categories" layoutX="222.0" layoutY="131.0" prefHeight="25.0" prefWidth="170.0" promptText="Choose the category">
             </ComboBox>
-            <Button fx:id="registerPayment" layoutX="69.0" layoutY="239.0" mnemonicParsing="false"
-                    onAction="#registerPayment" prefHeight="26.0" prefWidth="131.0" text="Register Payment"/>
-            <Button fx:id="goToOverview" layoutX="259.0" layoutY="239.0" mnemonicParsing="false"
-                    onAction="#goToOverview" text="Overview"/>
+            <Button fx:id="registerPayment" layoutX="69.0" layoutY="239.0" mnemonicParsing="false" onAction="#registerPayment" prefHeight="26.0" prefWidth="131.0" style="-fx-background-color: #f7c19b;" text="Register Payment">
+            <effect>
+               <Reflection />
+            </effect></Button>
+            <Button fx:id="goToOverview" layoutX="259.0" layoutY="239.0" mnemonicParsing="false" onAction="#goToOverview" style="-fx-background-color: #f7c19b;" text="Overview">
+            <effect>
+               <Reflection />
+            </effect></Button>
         </AnchorPane>
     </center>
 </BorderPane>

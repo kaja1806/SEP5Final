@@ -38,22 +38,6 @@ public class CreditCardController {
         }
     }
 
-    public void backToLogin(ActionEvent event) {
-
-        try {
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("/View/Login.fxml"));
-            stage.setTitle("Login");
-            stage.setScene(new Scene(root));
-            stage.show();
-            // hides the parent window
-            ((Node) (event.getSource())).getScene().getWindow().hide();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void goToOverview(ActionEvent event) {
         try {
             Stage stage = new Stage();
