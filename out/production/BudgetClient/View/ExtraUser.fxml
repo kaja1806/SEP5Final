@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controller.OverviewController">
+    <left>
+        <AnchorPane prefHeight="200.0" prefWidth="150.0" style="-fx-background-color: #f7c19b;"
+                    BorderPane.alignment="CENTER">
+            <children>
+                <Text layoutX="5.0" layoutY="87.0" stroke="#bfbaba" strokeType="OUTSIDE"
+                      text="This is the future improvement. The user will be able to add an extra (existing or completely new) user to the account. It is a perfect solution for couples or roomies."
+                      wrappingWidth="139.85938262939453">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Text>
+            </children>
+        </AnchorPane>
+    </left>
+    <center>
+        <AnchorPane prefHeight="200.0" prefWidth="450.0" BorderPane.alignment="CENTER">
+            <Text layoutX="37.0" layoutY="45.0" stroke="#bfbaba" strokeType="OUTSIDE" text="Add extra user">
+                <font>
+                    <Font size="20.0"/>
+                </font>
+            </Text>
+            <Line endX="100.0" layoutX="138.0" layoutY="50.0" startX="-100.0"/>
+            <TextField disable="true" layoutX="38.0" layoutY="86.0" promptText="First Name"/>
+            <TextField disable="true" layoutX="239.0" layoutY="86.0" promptText="Last Name"/>
+            <TextField disable="true" layoutX="38.0" layoutY="145.0" promptText="Email"/>
+            <TextField disable="true" layoutX="239.0" layoutY="145.0" promptText="Address"/>
+            <PasswordField disable="true" layoutX="38.0" layoutY="200.0" promptText="Password"/>
+            <PasswordField disable="true" layoutX="239.0" layoutY="200.0"
+                           promptText="Re-type password"/>
+            <TextField disable="true" layoutX="38.0" layoutY="263.0" promptText="Phone"/>
+            <ComboBox disable="true" layoutX="238.0" layoutY="263.0" prefWidth="150.0"
+                      promptText="Choose your bank"/>
+            <Button layoutX="169.0" layoutY="339.0" mnemonicParsing="false" onAction="#goToOverview" prefWidth="140.0"
+                    style="-fx-background-color: #f7c19b;" text="Return to overview">
+                <effect>
+                    <Reflection/>
+                </effect>
+            </Button>
+            <Button disable="true" layoutX="329.0" layoutY="339.0" mnemonicParsing="false"
+                    style="-fx-background-color: #f7c19b;" text="Add Card">
+                <effect>
+                    <Reflection/>
+                </effect>
+            </Button>
+            <CheckBox disable="true" layoutX="14.0" layoutY="331.0" mnemonicParsing="false" text="Existing user"/>
+            <CheckBox disable="true" layoutX="14.0" layoutY="356.0" mnemonicParsing="false" text="New user"/>
+        </AnchorPane>
+    </center>
+</BorderPane>
