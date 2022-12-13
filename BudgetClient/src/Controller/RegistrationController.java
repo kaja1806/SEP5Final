@@ -3,7 +3,6 @@ package Controller;
 import DB.BanksDAO;
 import DB.UserDAO;
 import Model.Banks;
-import Model.Category;
 import Model.UserModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

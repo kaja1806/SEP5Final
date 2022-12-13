@@ -4,28 +4,24 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="border"  prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.OverviewController">
+<AnchorPane fx:id="border" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.OverviewController">
     <children>
-        <Button fx:id="statusBtn" layoutX="414.0" layoutY="174.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="101.0" text="Show Status" />
-        <PieChart fx:id="pieChart" layoutX="40.0" layoutY="79.0" prefHeight="307.0" prefWidth="287.0" />
-        <MenuBar layoutX="370.0" layoutY="29.0" prefHeight="25.0" prefWidth="189.0">
+        <PieChart fx:id="pieChart" layoutX="91.0" layoutY="78.0" prefHeight="307.0" prefWidth="417.0"/>
+        <MenuBar layoutX="437.0" layoutY="27.0" prefHeight="25.0" prefWidth="126.0">
             <menus>
                 <Menu mnemonicParsing="false" text="Settings">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Account" />
-                        <MenuItem mnemonicParsing="false" text="Card" onAction="#addCard" />
+                        <MenuItem mnemonicParsing="false" text="Account"/>
+                        <MenuItem mnemonicParsing="false" onAction="#addCard" text="Card"/>
+                        <MenuItem mnemonicParsing="false" onAction="#seePremium" text="Premium"/>
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Add">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="New user" />
-                        <MenuItem mnemonicParsing="false" text="New card" />
-                        <MenuItem mnemonicParsing="false" onAction="#makePayment" text="New expense" />
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Premium">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="About" />
+                        <MenuItem mnemonicParsing="false" onAction="#extraUser" text="New user"/>
+                        <MenuItem mnemonicParsing="false" onAction="#addCard" text="New card"/>
+                        <MenuItem mnemonicParsing="false" onAction="#makePayment" text="New expense"/>
                     </items>
                 </Menu>
             </menus>

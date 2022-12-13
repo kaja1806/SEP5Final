@@ -88,7 +88,6 @@ public class CreditCardController {
 
         UserDAO userDAO = new UserDAO();
 
-
         if (!(cardInput.CardholderName.isEmpty() || cardInput.getCardNumber().isEmpty() || cardInput.ValidDate == null || cvc.isEmpty())) {
             if (userDAO.ifCardExistsPerUser() == null) {
                 String temp = userDAO.createCard(cardInput, incomeParse);
@@ -138,8 +137,6 @@ public class CreditCardController {
             Cardnickname.setText(card.getCardNickname());
             EstimatedIncome.setText(String.valueOf(userIncome));
             backbutton.setOnAction(event -> goToOverview(event));
-            /*data.add(card.CardNickname);
-            Cardnicknamedropdown.setItems(data);*/
         }
     }
 }

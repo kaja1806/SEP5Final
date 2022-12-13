@@ -14,21 +14,11 @@ public class UserModel {
         public String Password;
         public String PasswordConfirmation;
         public int UserID = 0;
+        public int Income;
 
         public RegistrationModel() {
 
         }
-
-        public int getUserID() {
-            return UserID;
-        }
-
-        public void setUserID(int userID) {
-            UserID = userID;
-        }
-
-        public int Income;
-
 
         public RegistrationModel(String firstName, String lastName, String email, String address, String phoneNr,
                                  String password, String passwordConfirmation, String nameOfBank) {
@@ -40,6 +30,14 @@ public class UserModel {
             Password = password;
             PasswordConfirmation = passwordConfirmation;
             NameOfBank = nameOfBank;
+        }
+
+        public int getUserID() {
+            return UserID;
+        }
+
+        public void setUserID(int userID) {
+            UserID = userID;
         }
 
         public String getFirstName() {

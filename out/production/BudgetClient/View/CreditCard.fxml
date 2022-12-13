@@ -16,7 +16,8 @@
     </left>
     <center>
         <AnchorPane prefHeight="200.0" prefWidth="450.0" BorderPane.alignment="CENTER">
-            <Text fx:id="topText" layoutX="37.0" layoutY="45.0" stroke="#bfbaba" strokeType="OUTSIDE" text="Add new card">
+            <Text fx:id="topText" layoutX="37.0" layoutY="45.0" stroke="#bfbaba" strokeType="OUTSIDE"
+                  text="Add new card">
                 <font>
                     <Font size="20.0"/>
                 </font>
@@ -27,7 +28,8 @@
             <TextField fx:id="Cvc" layoutX="238.0" layoutY="128.0" promptText="CVC / CVV"/>
             <TextField fx:id="CardholderName" layoutX="38.0" layoutY="128.0" promptText="Cardholder name"/>
             <TextField fx:id="EstimatedIncome" layoutX="238.0" layoutY="163.0" promptText="Estimated income"/>
-            <ComboBox fx:id="Cardnicknamedropdown" layoutX="254.0" layoutY="24.0" prefWidth="150.0" promptText="Choose card"/>
+            <ComboBox fx:id="Cardnicknamedropdown" layoutX="254.0" layoutY="24.0" prefWidth="150.0"
+                      promptText="Choose card"/>
             <TextField fx:id="Cardnickname" layoutX="38.0" layoutY="163.0" promptText="Card Nickname"/>
             <Button fx:id="backbutton" layoutX="217.0" layoutY="339.0" mnemonicParsing="false" onAction="#backToLogin"
                     style="-fx-background-color: #f7c19b;" text="Return to login">
@@ -112,6 +114,12 @@
                     <Font size="10.0"/>
                 </font>
             </Text>
+            <Button layoutX="17.0" layoutY="339.0" mnemonicParsing="false" onAction="#goToOverview"
+                    style="-fx-background-color: #f7c19b;" text="Back">
+                <effect>
+                    <Reflection/>
+                </effect>
+            </Button>
 
         </AnchorPane>
     </center>

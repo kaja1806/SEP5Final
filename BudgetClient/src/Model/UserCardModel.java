@@ -25,35 +25,35 @@ public class UserCardModel {
         CardNickname = cardNickname;
     }
 
-    public void setCardholderName(String cardholderName) {
-        CardholderName = cardholderName;
-    }
-
-    public void setCardNumber(String cardNumber) {
-        CardNumber = cardNumber;
-    }
-
-    public void setValidDate(LocalDate validDate) {
-        ValidDate = validDate;
-    }
-
-    public void setCvc(int cvc) {
-        Cvc = cvc;
-    }
-
     public String getCardholderName() {
         return CardholderName;
+    }
+
+    public void setCardholderName(String cardholderName) {
+        CardholderName = cardholderName;
     }
 
     public String getCardNumber() {
         return CardNumber;
     }
 
+    public void setCardNumber(String cardNumber) {
+        CardNumber = cardNumber;
+    }
+
     public LocalDate getValidDate() {
         return ValidDate;
     }
 
+    public void setValidDate(LocalDate validDate) {
+        ValidDate = validDate;
+    }
+
     public int getCvc() {
         return Cvc;
+    }
+
+    public void setCvc(int cvc) {
+        Cvc = cvc;
     }
 }

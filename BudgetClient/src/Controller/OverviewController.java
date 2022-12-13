@@ -1,7 +1,6 @@
 package Controller;
 
 import DB.ExpensesDAO;
-import Model.OverviewModel;
 
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,7 +9,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
-import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -19,14 +17,15 @@ import java.io.IOException;
 
 public class OverviewController {
     public PieChart pieChart;
-    public Button statusBtn;
     public AnchorPane border;
 
     ExpensesDAO ex = new ExpensesDAO();
 
     public void initialize() {
-        ObservableList<PieChart.Data> data = ex.getAllExpenses();
-        pieChart.getData().addAll(data);
+        if (pieChart != null) {
+            ObservableList<PieChart.Data> data = ex.getAllExpenses();
+            pieChart.getData().addAll(data);
+        }
     }
 
     public void makePayment() {
@@ -38,13 +37,37 @@ public class OverviewController {
             stage.show();
             border.getScene().getWindow().hide();
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void seePremium() {
+        try {
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("/View/About.fxml"));
+            stage.setTitle("Premium");
+            stage.setScene(new Scene(root));
+            stage.show();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void addCard(ActionEvent event) {
+    public void extraUser() {
+        try {
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load((getClass().getResource("/View/ExtraUser.fxml")));
+            stage.setTitle("Extra User");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addCard() {
         try {
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("/View/CreditCard.fxml"));
@@ -56,6 +79,10 @@ public class OverviewController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void goToOverview(ActionEvent event) {
+        ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 }
 
