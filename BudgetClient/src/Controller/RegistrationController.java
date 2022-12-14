@@ -1,13 +1,15 @@
 package Controller;
 
+import BudgetClient.IBudgetClient;
 import DB.BanksDAO;
 import DB.UserDAO;
+import Handlers.IClientHelper;
+import Interface.IServerClient;
 import Model.Banks;
 import Model.UserModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -16,6 +18,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
 
 public class RegistrationController {
 
@@ -27,10 +30,27 @@ public class RegistrationController {
     public PasswordField PasswordConfirmation;
     public TextField PhoneNr;
     public ComboBox NameOfBank;
+    public IClientHelper clientHelper;
 
-    BanksDAO ba = new BanksDAO();
+    UserDAO ba = new UserDAO();
 
-    public void initialize() {
+
+    public void init(IClientHelper handler) {
+
+        this.clientHelper = handler;
+
+        /*ObservableList<Banks> banks = ba.getAllBanks();
+        ObservableList<String> data = FXCollections.observableArrayList();
+
+        for (Banks bank : banks) {
+            String bankName = bank.NameOfBank;
+            data.add(bankName);
+        }
+        NameOfBank.setItems(data);*/
+
+    }
+
+/*    public void initialize() {
         ObservableList<Banks> banks = ba.getAllBanks();
         ObservableList<String> data = FXCollections.observableArrayList();
 
@@ -39,7 +59,7 @@ public class RegistrationController {
             data.add(bankName);
         }
         NameOfBank.setItems(data);
-    }
+    }*/
 
     public void registerUserToApplication(ActionEvent event) {
 
@@ -47,16 +67,16 @@ public class RegistrationController {
             NameOfBank.setValue("");
         }
 
-        UserModel.RegistrationModel inputRegData = new UserModel.RegistrationModel(FirstName.getText(),
+        UserModel inputRegData = new UserModel(FirstName.getText(),
                 LastName.getText(), Email.getText(), Address.getText(), PhoneNr.getText(), Password.getText(),
                 PasswordConfirmation.getText(), NameOfBank.getValue().toString());
 
-        UserDAO userDAO = new UserDAO();
 
+        clientHelper.createUser(inputRegData);
 
-        if (!(inputRegData.FirstName.isEmpty() || inputRegData.LastName.isEmpty() & inputRegData.Email.isEmpty() || inputRegData.Address.isEmpty() || inputRegData.PhoneNr.isEmpty() || inputRegData.Password.isEmpty() || inputRegData.PasswordConfirmation.isEmpty() || inputRegData.NameOfBank.equals(""))) {
+        /*if (!(inputRegData.FirstName.isEmpty() || inputRegData.LastName.isEmpty() & inputRegData.Email.isEmpty() || inputRegData.Address.isEmpty() || inputRegData.PhoneNr.isEmpty() || inputRegData.Password.isEmpty() || inputRegData.PasswordConfirmation.isEmpty() )) {
             if (inputRegData.Password.equals(inputRegData.PasswordConfirmation)) {
-                String temp = userDAO.createUser(inputRegData);
+                String temp = clientHelper.createUser(inputRegData);
                 if (temp.equals("User added")) {
                     //Show another view
                     backToLogin(event);
@@ -80,7 +100,7 @@ public class RegistrationController {
         } else {
             Alert a1 = new Alert(Alert.AlertType.INFORMATION, "All of the fields should be filled", ButtonType.OK);
             a1.show();
-        }
+        }*/
     }
 
     public void backToLogin(ActionEvent event) {
@@ -97,4 +117,6 @@ public class RegistrationController {
             e.printStackTrace();
         }
     }
+
+
 }

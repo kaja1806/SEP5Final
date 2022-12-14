@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class User_Authentication {
 
     private static final ResultSet resultSet = null;
-    public static UserModel.RegistrationModel userModel = new UserModel.RegistrationModel();
+    public static UserModel userModel = new UserModel();
     private static Conn conn;
 
     public static int isValid(String name, String pass) {
