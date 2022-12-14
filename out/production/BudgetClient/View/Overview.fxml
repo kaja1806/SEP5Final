@@ -13,8 +13,6 @@
             <menus>
                 <Menu mnemonicParsing="false" text="Settings">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Account"/>
-                        <MenuItem mnemonicParsing="false" onAction="#addCard" text="Card"/>
                         <MenuItem mnemonicParsing="false" onAction="#seePremium" text="Premium"/>
                     </items>
                 </Menu>

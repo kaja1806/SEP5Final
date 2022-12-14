@@ -41,23 +41,6 @@ public class RegistrationController {
         NameOfBank.setItems(data);
     }
 
-
-    @FXML
-    public void handleRegistration(ActionEvent event) {
-
-        try {
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("/View/CreditCard.fxml"));
-            stage.setTitle("Overview");
-            stage.setScene(new Scene(root));
-            stage.show();
-            ((Node) (event.getSource())).getScene().getWindow().hide();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void registerUserToApplication(ActionEvent event) {
 
         if (NameOfBank.getValue() == null) {
@@ -76,7 +59,7 @@ public class RegistrationController {
                 String temp = userDAO.createUser(inputRegData);
                 if (temp.equals("User added")) {
                     //Show another view
-                    handleRegistration(event);
+                    backToLogin(event);
 
                     Alert a1 = new Alert(Alert.AlertType.INFORMATION, "User " + FirstName.getText() + " has been " +
                             "added!", ButtonType.OK);

@@ -26,7 +26,7 @@
             <PasswordField fx:id="PasswordConfirmation" layoutX="239.0" layoutY="200.0" promptText="Re-type password" />
             <TextField fx:id="PhoneNr" layoutX="38.0" layoutY="263.0" promptText="Phone" />
             <ComboBox fx:id="NameOfBank" layoutX="238.0" layoutY="263.0" prefWidth="150.0" promptText="Choose your bank" />
-            <Button layoutX="195.0" layoutY="346.0" mnemonicParsing="false" onAction="#backToLogin" style="-fx-background-color: #f7c19b;" text="Register">
+            <Button layoutX="195.0" layoutY="346.0" mnemonicParsing="false" onAction="#registerUserToApplication" style="-fx-background-color: #f7c19b;" text="Register">
                 <effect>
                     <Reflection />
                 </effect>
