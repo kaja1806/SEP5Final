@@ -80,6 +80,9 @@ public class OverviewController {
             e.printStackTrace();
         }
     }
+    public void goToSettings(ActionEvent event) {
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+    }
 
     public void goToOverview(ActionEvent event) {
         ((Node) (event.getSource())).getScene().getWindow().hide();
