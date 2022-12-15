@@ -1,7 +1,6 @@
 package BudgetClient;
 
 import Controller.LoginController;
-import Controller.RegistrationController;
 import Handlers.ClientHelper;
 import Handlers.IClientHelper;
 import javafx.application.Application;

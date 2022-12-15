@@ -2,11 +2,8 @@ package Controller;
 
 import BudgetClient.BudgetClient;
 import BudgetClient.IBudgetClient;
-import DB.BanksDAO;
-import DB.UserDAO;
 import Handlers.ClientHelper;
 import Handlers.IClientHelper;
-import Interface.IServerClient;
 import Model.Banks;
 import Model.UserModel;
 import javafx.collections.FXCollections;
@@ -20,7 +17,6 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.rmi.RemoteException;
 
 public class RegistrationController {
 
@@ -34,26 +30,11 @@ public class RegistrationController {
     public ComboBox NameOfBank;
     public IClientHelper clientHelper;
 
-    UserDAO ba = new UserDAO();
-
-
     public void init(IClientHelper handler) {
 
         this.clientHelper = handler;
 
-        /*ObservableList<Banks> banks = ba.getAllBanks();
-        ObservableList<String> data = FXCollections.observableArrayList();
-
-        for (Banks bank : banks) {
-            String bankName = bank.NameOfBank;
-            data.add(bankName);
-        }
-        NameOfBank.setItems(data);*/
-
-    }
-
-/*    public void initialize() {
-        ObservableList<Banks> banks = ba.getAllBanks();
+        ObservableList<Banks> banks = handler.getAllBanks();
         ObservableList<String> data = FXCollections.observableArrayList();
 
         for (Banks bank : banks) {
@@ -61,7 +42,8 @@ public class RegistrationController {
             data.add(bankName);
         }
         NameOfBank.setItems(data);
-    }*/
+
+    }
 
     public void registerUserToApplication(ActionEvent event) throws Exception {
 
@@ -74,8 +56,7 @@ public class RegistrationController {
                 PasswordConfirmation.getText(), NameOfBank.getValue().toString());
 
 
-
-        if (!(inputRegData.FirstName.isEmpty() || inputRegData.LastName.isEmpty() & inputRegData.Email.isEmpty() || inputRegData.Address.isEmpty() || inputRegData.PhoneNr.isEmpty() || inputRegData.Password.isEmpty() || inputRegData.PasswordConfirmation.isEmpty() )) {
+        if (!(inputRegData.FirstName.isEmpty() || inputRegData.LastName.isEmpty() & inputRegData.Email.isEmpty() || inputRegData.Address.isEmpty() || inputRegData.PhoneNr.isEmpty() || inputRegData.Password.isEmpty() || inputRegData.PasswordConfirmation.isEmpty())) {
             if (inputRegData.Password.equals(inputRegData.PasswordConfirmation)) {
                 String temp = clientHelper.createUser(inputRegData);
                 if (temp.equals("User added")) {

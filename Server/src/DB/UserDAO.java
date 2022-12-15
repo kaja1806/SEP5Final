@@ -4,7 +4,6 @@ import Model.UserCardModel;
 import Model.UserModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;

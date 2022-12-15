@@ -1,8 +1,11 @@
 package DB;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-import static java.sql.DriverManager.*;
+import static java.sql.DriverManager.getConnection;
 
 /**
  * Takes care of the database access read/write
@@ -14,7 +17,7 @@ public class Conn {
     private static final String DRIVER = "org.postgresql.Driver";
     private static final String URL = "jdbc:postgresql://localhost:5432/postgres?currentSchema=dbo";
     private static final String USER = "postgres";
-    private static final String PASSWORD = "1234";
+    private static final String PASSWORD = "Kaja1806";
     private static Conn conn;
     private final String url;
     private final String user;

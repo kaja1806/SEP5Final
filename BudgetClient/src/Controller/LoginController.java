@@ -2,7 +2,6 @@ package Controller;
 
 import BudgetClient.BudgetClient;
 import BudgetClient.IBudgetClient;
-import DB.User_Authentication;
 import Handlers.ClientHelper;
 import Handlers.IClientHelper;
 import javafx.event.ActionEvent;
@@ -38,7 +37,7 @@ public class LoginController {
     }
 
     @FXML
-    public void handleLogin(ActionEvent event) {
+    public void handleLogin(ActionEvent event) throws Exception {
         String name = username.getText();
         String pass = password.getText();
 
@@ -54,14 +53,22 @@ public class LoginController {
         }
     }
 
-    public void goToOverview(ActionEvent event) {
+    public void goToOverview(ActionEvent event) throws Exception {
         try {
             Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("/View/Overview.fxml"));
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/View/Overview.fxml"));
+            Parent main = loader.load();
+            OverviewController ctrl = loader.getController();
+            IBudgetClient cl = new BudgetClient();
+            IClientHelper handler = new ClientHelper(cl);
+            ctrl.init(handler);
+
             stage.setTitle("Overview");
-            stage.setScene(new Scene(root));
+            stage.setScene(new Scene(main));
             stage.show();
             ((Node) (event.getSource())).getScene().getWindow().hide();
+
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -84,17 +91,8 @@ public class LoginController {
             stage.show();
             ((Node) (event.getSource())).getScene().getWindow().hide();
 
-            /*Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("/View/Registration.fxml"));
-            stage.setTitle("Registration");
-            stage.setScene(new Scene(root));
-            stage.show();
-            ((Node) (event.getSource())).getScene().getWindow().hide();*/
-
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-
 }
