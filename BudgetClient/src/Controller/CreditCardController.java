@@ -4,6 +4,7 @@ import BudgetClient.BudgetClient;
 import BudgetClient.IBudgetClient;
 import Handlers.ClientHelper;
 import Handlers.IClientHelper;
+import Model.Banks;
 import Model.UserCardModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -31,6 +32,7 @@ public class CreditCardController {
     public Text topText;
 
     public IClientHelper clientHelper;
+    public ComboBox NameOfBank;
 
 
     public void init(IClientHelper handler) {
@@ -42,6 +44,14 @@ public class CreditCardController {
         if (cards.size() != 0) {
             displayUserCard(cards, userIncome);
         }
+        ObservableList<Banks> banks = handler.getAllBanks();
+        ObservableList<String> data = FXCollections.observableArrayList();
+
+        for (Banks bank : banks) {
+            String bankName = bank.NameOfBank;
+            data.add(bankName);
+        }
+        NameOfBank.setItems(data);
     }
 
     public void goToOverview(ActionEvent event) throws Exception {
@@ -73,6 +83,9 @@ public class CreditCardController {
 
         String cvc = Cvc.getText();
         String income = EstimatedIncome.getText();
+        if (NameOfBank.getValue() == null) {
+            NameOfBank.setValue("");
+        }
         if (income.equals("") || cvc.equals("")) {
             cvc = String.valueOf(0);
             income = String.valueOf(0);
@@ -81,7 +94,7 @@ public class CreditCardController {
         int incomeParse = Integer.parseInt(income);
 
         UserCardModel cardInput = new UserCardModel(CardholderName.getText(), CardNumber.getText(),
-                ValidDate.getValue(), cvcParse, Cardnickname.getText());
+                ValidDate.getValue(), cvcParse, Cardnickname.getText(), NameOfBank.getValue().toString());
 
 
         if (!(cardInput.CardholderName.isEmpty() || cardInput.getCardNumber().isEmpty() || cardInput.ValidDate == null || cvc.isEmpty())) {

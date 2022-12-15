@@ -27,8 +27,7 @@ public class UserDAO implements Serializable {
                         + "','" + userModel.getEmail()
                         + "','" + userModel.getAddress()
                         + "','" + userModel.getPhoneNr()
-                        + "','" + userModel.getPassword()
-                        + "','" + userModel.getNameOfBank() + "');";
+                        + "','" + userModel.getPassword() + "');";
         String sqlgetuser = "SELECT * FROM users WHERE email = " + "'" + userModel.getEmail() + "'";
 
         try {
@@ -51,8 +50,14 @@ public class UserDAO implements Serializable {
         conn = Conn.getInstance();
 
         String sql =
-                "INSERT INTO usercard(cardholdername,cardnumber,validdate,cvc,userid,cardnickname) " + "values" +
-                        "('" + userCard.getCardholderName() + "','" + userCard.getCardNumber() + "','" + userCard.getValidDate() + "','" + userCard.getCvc() + "','" + userModel.getUserID() + "','" + userCard.getCardNickname() + "');";
+                "INSERT INTO usercard(cardholdername,cardnumber,validdate,cvc,userid,nameofbank,cardnickname) " + "values" +
+                        "('" + userCard.getCardholderName() + "','"
+                        + userCard.getCardNumber() + "','"
+                        + userCard.getValidDate() + "','"
+                        + userCard.getCvc() + "','"
+                        + userModel.getUserID() + "','"
+                        + userCard.getNameOfBank() + "','"
+                        + userCard.getCardNickname() + "');";
         String sql2 = "UPDATE users SET income = " + income + " WHERE id =" + userModel.getUserID() + ";";
         try {
             conn.update(sql);
@@ -71,8 +76,14 @@ public class UserDAO implements Serializable {
         conn = Conn.getInstance();
 
         String sql =
-                "UPDATE usercard SET " + "cardholdername = " + "'" + userCard.getCardholderName() + "'," + " " +
-                        "cardnumber = " + userCard.getCardNumber() + "," + " " + "validdate = " + "'" + userCard.getValidDate() + "'," + " " + "cvc = " + userCard.getCvc() + "," + " " + "cardnickname = " + "'" + userCard.getCardNickname() + "'" + " " + "WHERE userid =" + userModel.getUserID() + ";";
+                "UPDATE usercard SET "
+                        + "cardholdername = " + "'" + userCard.getCardholderName() + "'," + " "
+                        + "cardnumber = " + userCard.getCardNumber() + "," + " "
+                        + "validdate = " + "'" + userCard.getValidDate() + "'," + " "
+                        + "cvc = " + userCard.getCvc() + "," + " "
+                        + "cardnickname = " + "'" + userCard.getCardNickname() + "'"
+                        + "nameofbank = " + "'" + userCard.getNameOfBank() + "'"
+                        + " " + "WHERE userid =" + userModel.getUserID() + ";";
         String sql2 = "UPDATE users SET " + "income = " + income + " " + "WHERE id =" + userModel.getUserID() + ";";
         try {
             conn.update(sql);
@@ -101,7 +112,8 @@ public class UserDAO implements Serializable {
                 LocalDate valid = rs.getDate("validdate").toLocalDate();
                 int cvc = rs.getInt("cvc");
                 String nickname = rs.getString("cardnickname");
-                allCardsPerUser.add(new UserCardModel(name, number, valid, cvc, nickname));
+                String nameofbank = rs.getString("nameofbank");
+                allCardsPerUser.add(new UserCardModel(name, number, valid, cvc, nickname,nameofbank));
             }
             return allCardsPerUser;
 

@@ -5,7 +5,6 @@ public class UserModel {
     public String LastName;
     public String Email;
     public String Address;
-    public String NameOfBank = "";
     public String PhoneNr;
     public String Password;
     public String PasswordConfirmation;
@@ -17,7 +16,7 @@ public class UserModel {
     }
 
     public UserModel(String firstName, String lastName, String email, String address, String phoneNr, String password
-            , String passwordConfirmation, String nameOfBank) {
+            , String passwordConfirmation) {
         FirstName = firstName;
         LastName = lastName;
         Email = email;
@@ -25,7 +24,6 @@ public class UserModel {
         PhoneNr = phoneNr;
         Password = password;
         PasswordConfirmation = passwordConfirmation;
-        NameOfBank = nameOfBank;
     }
 
     public int getUserID() {
@@ -58,10 +56,6 @@ public class UserModel {
 
     public String getPassword() {
         return Password;
-    }
-
-    public String getNameOfBank() {
-        return NameOfBank;
     }
 
     public int getIncome() {

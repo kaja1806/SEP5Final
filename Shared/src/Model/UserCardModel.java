@@ -9,12 +9,17 @@ public class UserCardModel {
     public int Cvc;
     public String CardNickname;
 
-    public UserCardModel(String cardholderName, String cardNumber, LocalDate validDate, int cvc, String cardNickname) {
+
+    public String NameOfBank = "";
+
+
+    public UserCardModel(String cardholderName, String cardNumber, LocalDate validDate, int cvc, String cardNickname, String nameOfBank) {
         CardholderName = cardholderName;
         CardNumber = cardNumber;
         ValidDate = validDate;
         Cvc = cvc;
         CardNickname = cardNickname;
+        NameOfBank = nameOfBank;
     }
 
     public String getCardNickname() {
@@ -55,5 +60,13 @@ public class UserCardModel {
 
     public void setCvc(int cvc) {
         Cvc = cvc;
+    }
+
+    public String getNameOfBank() {
+        return NameOfBank;
+    }
+
+    public void setNameOfBank(String nameOfBank) {
+        NameOfBank = nameOfBank;
     }
 }

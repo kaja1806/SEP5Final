@@ -27,33 +27,21 @@ public class RegistrationController {
     public PasswordField Password;
     public PasswordField PasswordConfirmation;
     public TextField PhoneNr;
-    public ComboBox NameOfBank;
     public IClientHelper clientHelper;
 
     public void init(IClientHelper handler) {
 
         this.clientHelper = handler;
 
-        ObservableList<Banks> banks = handler.getAllBanks();
-        ObservableList<String> data = FXCollections.observableArrayList();
-
-        for (Banks bank : banks) {
-            String bankName = bank.NameOfBank;
-            data.add(bankName);
-        }
-        NameOfBank.setItems(data);
-
     }
 
     public void registerUserToApplication(ActionEvent event) throws Exception {
 
-        if (NameOfBank.getValue() == null) {
-            NameOfBank.setValue("");
-        }
+
 
         UserModel inputRegData = new UserModel(FirstName.getText(),
                 LastName.getText(), Email.getText(), Address.getText(), PhoneNr.getText(), Password.getText(),
-                PasswordConfirmation.getText(), NameOfBank.getValue().toString());
+                PasswordConfirmation.getText());
 
 
         if (!(inputRegData.FirstName.isEmpty() || inputRegData.LastName.isEmpty() & inputRegData.Email.isEmpty() || inputRegData.Address.isEmpty() || inputRegData.PhoneNr.isEmpty() || inputRegData.Password.isEmpty() || inputRegData.PasswordConfirmation.isEmpty())) {
