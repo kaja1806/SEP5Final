@@ -72,9 +72,8 @@ public class RegistrationController {
                 PasswordConfirmation.getText(), NameOfBank.getValue().toString());
 
 
-        clientHelper.createUser(inputRegData);
 
-        /*if (!(inputRegData.FirstName.isEmpty() || inputRegData.LastName.isEmpty() & inputRegData.Email.isEmpty() || inputRegData.Address.isEmpty() || inputRegData.PhoneNr.isEmpty() || inputRegData.Password.isEmpty() || inputRegData.PasswordConfirmation.isEmpty() )) {
+        if (!(inputRegData.FirstName.isEmpty() || inputRegData.LastName.isEmpty() & inputRegData.Email.isEmpty() || inputRegData.Address.isEmpty() || inputRegData.PhoneNr.isEmpty() || inputRegData.Password.isEmpty() || inputRegData.PasswordConfirmation.isEmpty() )) {
             if (inputRegData.Password.equals(inputRegData.PasswordConfirmation)) {
                 String temp = clientHelper.createUser(inputRegData);
                 if (temp.equals("User added")) {
@@ -100,7 +99,7 @@ public class RegistrationController {
         } else {
             Alert a1 = new Alert(Alert.AlertType.INFORMATION, "All of the fields should be filled", ButtonType.OK);
             a1.show();
-        }*/
+        }
     }
 
     public void backToLogin(ActionEvent event) {
