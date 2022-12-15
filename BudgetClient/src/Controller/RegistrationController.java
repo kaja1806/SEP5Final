@@ -1,8 +1,10 @@
 package Controller;
 
+import BudgetClient.BudgetClient;
 import BudgetClient.IBudgetClient;
 import DB.BanksDAO;
 import DB.UserDAO;
+import Handlers.ClientHelper;
 import Handlers.IClientHelper;
 import Interface.IServerClient;
 import Model.Banks;
@@ -61,7 +63,7 @@ public class RegistrationController {
         NameOfBank.setItems(data);
     }*/
 
-    public void registerUserToApplication(ActionEvent event) {
+    public void registerUserToApplication(ActionEvent event) throws Exception {
 
         if (NameOfBank.getValue() == null) {
             NameOfBank.setValue("");
@@ -102,12 +104,19 @@ public class RegistrationController {
         }
     }
 
-    public void backToLogin(ActionEvent event) {
+    public void backToLogin(ActionEvent event) throws Exception {
         try {
             Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("/View/Login.fxml"));
-            stage.setTitle("Login");
-            stage.setScene(new Scene(root));
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/View/Login.fxml"));
+            Parent main = loader.load();
+            LoginController ctrl = loader.getController();
+            IBudgetClient cl = new BudgetClient();
+            IClientHelper handler = new ClientHelper(cl);
+            ctrl.init(handler);
+
+            stage.setTitle("Budget");
+            stage.setScene(new Scene(main));
             stage.show();
             // hides the parent window
             ((Node) (event.getSource())).getScene().getWindow().hide();

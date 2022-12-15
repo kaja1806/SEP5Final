@@ -18,4 +18,5 @@ public class ServerClientHandler implements IServerClient {
     public String createUser(UserModel userModel) {
         return clientHandler.createUser(userModel);
     }
+    public int validateUser(String name, String pass) {return clientHandler.validateUser(name, pass); }
 }

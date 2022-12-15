@@ -24,4 +24,13 @@ public class BudgetClient implements IBudgetClient {
             return "Error";
         }
     }
+
+    @Override
+    public int validateUser(String name, String pass) {
+        try {
+            return server.getClient().validateUser(name, pass);
+        } catch (RemoteException e) {
+            return 0;
+        }
+    }
 }

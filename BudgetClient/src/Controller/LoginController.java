@@ -1,6 +1,9 @@
 package Controller;
 
+import BudgetClient.BudgetClient;
+import BudgetClient.IBudgetClient;
 import DB.User_Authentication;
+import Handlers.ClientHelper;
 import Handlers.IClientHelper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,12 +30,19 @@ public class LoginController {
 
     public int uid;
 
+    public IClientHelper clientHelper;
+
+    public void init(IClientHelper handler) {
+
+        this.clientHelper = handler;
+    }
+
     @FXML
     public void handleLogin(ActionEvent event) {
         String name = username.getText();
         String pass = password.getText();
 
-        uid = User_Authentication.isValid(name, pass);
+        uid = clientHelper.validateUser(name, pass);
 
         if (uid != 0) {
             goToOverview(event);
@@ -58,14 +68,28 @@ public class LoginController {
         }
     }
 
-    public void goToRegistration(ActionEvent event) {
+    public void goToRegistration(ActionEvent event) throws Exception {
         try {
             Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/View/Registration.fxml"));
+            Parent main = loader.load();
+            RegistrationController ctrl = loader.getController();
+            IBudgetClient cl = new BudgetClient();
+            IClientHelper handler = new ClientHelper(cl);
+            ctrl.init(handler);
+
+            stage.setTitle("Registration");
+            stage.setScene(new Scene(main));
+            stage.show();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+
+            /*Stage stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("/View/Registration.fxml"));
             stage.setTitle("Registration");
             stage.setScene(new Scene(root));
             stage.show();
-            ((Node) (event.getSource())).getScene().getWindow().hide();
+            ((Node) (event.getSource())).getScene().getWindow().hide();*/
 
         } catch (IOException e) {
             e.printStackTrace();
