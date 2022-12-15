@@ -12,6 +12,10 @@ public class User_Authentication implements Serializable {
     public static UserModel userModel = new UserModel();
     private static Conn conn;
 
+    public static int getUserID() {
+        return userModel.UserID;
+    }
+
     public int isValid(String name, String pass) {
         conn = Conn.getInstance();
 
@@ -28,10 +32,6 @@ public class User_Authentication implements Serializable {
             se.printStackTrace();
         }
         return userModel.getUserID();
-    }
-
-    public static int getUserID() {
-        return userModel.UserID;
     }
 
 

@@ -3,11 +3,11 @@ package DB;
 import Model.Category;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
-public class CategoryDAO {
+public class CategoryDAO implements Serializable {
     private Conn conn;
 
     public ObservableList<Category> getAllCategories() {

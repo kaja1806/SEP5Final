@@ -1,7 +1,5 @@
 package Model;
 
-import java.io.Serializable;
-
 public class UserModel {
     public String FirstName;
     public String LastName;

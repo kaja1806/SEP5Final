@@ -1,11 +1,12 @@
 package DB;
 
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import static DB.User_Authentication.userModel;
 
-public class PaymentDAO {
+public class PaymentDAO implements Serializable {
 
     private Conn conn;
 
@@ -20,7 +21,7 @@ public class PaymentDAO {
         return "Expense updated";
     }
 
-    public String addNewExpense(String categoryName, int amount) {
+    public void addNewExpense(String categoryName, int amount) {
         conn = Conn.getInstance();
 
         try {
@@ -28,18 +29,14 @@ public class PaymentDAO {
                     "INSERT INTO expenses(amount,userid,categoryname) values('" + amount + "','" + userModel.UserID + "'," + "'" + categoryName + "');";
             conn.update(insert);
         } catch (SQLException e) {
-            if (e.getSQLState().equals("23505")) {
-                return "Duplicate key";
-            }
             e.printStackTrace();
         }
-        return "Expense added";
     }
 
     public boolean updateExistingExpense(String categoryName, int amount) {
         conn = Conn.getInstance();
         try {
-            String dbamount = "SELECT amount FROM expenses WHERE categoryname =" + "'" + categoryName + "'" + ";";
+            String dbamount = "SELECT amount FROM expenses WHERE categoryname =" + "'" + categoryName + "' AND userid =" + "'" + userModel.UserID + "'" + ";";
             ResultSet rsAmount = conn.query(dbamount);
             while (rsAmount.next()) {
                 int dbBeforeAmount = rsAmount.getInt("amount");

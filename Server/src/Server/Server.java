@@ -1,7 +1,7 @@
 package Server;
 
-import Interface.*;
-import Model.UserModel;
+import Interface.IServer;
+import Interface.IServerClient;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;

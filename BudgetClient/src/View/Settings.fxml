@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-            prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.OverviewController">
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            fx:controller="Controller.OverviewController">
     <top>
         <AnchorPane prefHeight="87.0" prefWidth="600.0" style="-fx-background-color: #f7c19b;"
                     BorderPane.alignment="CENTER">
@@ -91,8 +92,12 @@
         <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;"
                     BorderPane.alignment="CENTER">
             <children>
-                <Button layoutX="66.0" layoutY="262.0" mnemonicParsing="false" text="Return to overview" onAction="#goToOverview"
+                <Button layoutX="66.0" layoutY="262.0" mnemonicParsing="false" onAction="#goToOverview"
+                        style="-fx-background-color: #f7c19b;" text="Return to overview"
                         AnchorPane.rightAnchor="14.666666666666686">
+                    <effect>
+                        <Reflection/>
+                    </effect>
                     <cursor>
                         <Cursor fx:constant="HAND"/>
                     </cursor>
