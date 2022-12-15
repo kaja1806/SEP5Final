@@ -1,7 +1,9 @@
 package Controller;
 
-import DB.CategoryDAO;
-import DB.PaymentDAO;
+import BudgetClient.BudgetClient;
+import BudgetClient.IBudgetClient;
+import Handlers.ClientHelper;
+import Handlers.IClientHelper;
 import Model.Category;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,11 +23,14 @@ public class PaymentController {
     public ComboBox Categories;
     public Button goToOverview;
 
-    CategoryDAO ca = new CategoryDAO();
+    public IClientHelper clientHelper;
 
-    public void initialize() {
 
-        ObservableList<Category> categories = ca.getAllCategories();
+    public void init(IClientHelper handler) {
+
+        this.clientHelper = handler;
+
+        ObservableList<Category> categories = handler.getAllCategories();
         ObservableList<String> data = FXCollections.observableArrayList();
 
         for (Category cat : categories) {
@@ -39,18 +44,24 @@ public class PaymentController {
 
         int amount = Integer.parseInt(amountField.getText());
         String categoryName = Categories.getValue().toString();
-        PaymentDAO payment = new PaymentDAO();
-        String paymentResponse = payment.addPayment(categoryName, amount);
+        String paymentResponse = clientHelper.addPayment(categoryName, amount);
         Alert a1 = new Alert(Alert.AlertType.INFORMATION, paymentResponse, ButtonType.OK);
         a1.show();
     }
 
-    public void goToOverview(ActionEvent event) {
+    public void goToOverview(ActionEvent event) throws Exception {
         try {
             Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("/View/Overview.fxml"));
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/View/Overview.fxml"));
+            Parent main = loader.load();
+            OverviewController ctrl = loader.getController();
+            IBudgetClient cl = new BudgetClient();
+            IClientHelper handler = new ClientHelper(cl);
+            ctrl.init(handler);
+
             stage.setTitle("Overview");
-            stage.setScene(new Scene(root));
+            stage.setScene(new Scene(main));
             stage.show();
             ((Node) (event.getSource())).getScene().getWindow().hide();
 

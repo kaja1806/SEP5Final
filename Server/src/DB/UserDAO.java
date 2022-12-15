@@ -4,7 +4,7 @@ import Model.UserCardModel;
 import Model.UserModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -12,17 +12,24 @@ import java.time.LocalDate;
 import static DB.User_Authentication.userModel;
 
 
-public class UserDAO {
+public class UserDAO implements Serializable {
 
     private static final ResultSet resultSet = null;
 
     private Conn conn;
 
-    public String createUser(UserModel.RegistrationModel registrationModel) {
+    public String createUser(UserModel userModel) {
         conn = Conn.getInstance();
         String sql =
-                "INSERT INTO users(firstname,lastname,email,address,phonenr,password,nameofbank) " + "values('" + registrationModel.getFirstName() + "','" + registrationModel.getLastName() + "','" + registrationModel.getEmail() + "','" + registrationModel.getAddress() + "','" + registrationModel.getPhoneNr() + "','" + registrationModel.getPassword() + "','" + registrationModel.getNameOfBank() + "');";
-        String sqlgetuser = "SELECT * FROM users WHERE email = " + "'" + registrationModel.getEmail() + "'";
+                "INSERT INTO users(firstname,lastname,email,address,phonenr,password,nameofbank) "
+                        + "values('" + userModel.getFirstName()
+                        + "','" + userModel.getLastName()
+                        + "','" + userModel.getEmail()
+                        + "','" + userModel.getAddress()
+                        + "','" + userModel.getPhoneNr()
+                        + "','" + userModel.getPassword()
+                        + "','" + userModel.getNameOfBank() + "');";
+        String sqlgetuser = "SELECT * FROM users WHERE email = " + "'" + userModel.getEmail() + "'";
 
         try {
             conn.update(sql);

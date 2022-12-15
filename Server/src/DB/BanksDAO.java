@@ -1,14 +1,14 @@
 package DB;
 
 import Model.Banks;
-import Model.Category;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class BanksDAO {
+public class BanksDAO implements Serializable {
 
     private Conn conn;
 

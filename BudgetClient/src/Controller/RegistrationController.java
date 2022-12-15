@@ -1,13 +1,14 @@
 package Controller;
 
-import DB.BanksDAO;
-import DB.UserDAO;
+import BudgetClient.BudgetClient;
+import BudgetClient.IBudgetClient;
+import Handlers.ClientHelper;
+import Handlers.IClientHelper;
 import Model.Banks;
 import Model.UserModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -27,11 +28,13 @@ public class RegistrationController {
     public PasswordField PasswordConfirmation;
     public TextField PhoneNr;
     public ComboBox NameOfBank;
+    public IClientHelper clientHelper;
 
-    BanksDAO ba = new BanksDAO();
+    public void init(IClientHelper handler) {
 
-    public void initialize() {
-        ObservableList<Banks> banks = ba.getAllBanks();
+        this.clientHelper = handler;
+
+        ObservableList<Banks> banks = handler.getAllBanks();
         ObservableList<String> data = FXCollections.observableArrayList();
 
         for (Banks bank : banks) {
@@ -39,44 +42,26 @@ public class RegistrationController {
             data.add(bankName);
         }
         NameOfBank.setItems(data);
+
     }
 
-
-    @FXML
-    public void handleRegistration(ActionEvent event) {
-
-        try {
-            Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("/View/CreditCard.fxml"));
-            stage.setTitle("Overview");
-            stage.setScene(new Scene(root));
-            stage.show();
-            ((Node) (event.getSource())).getScene().getWindow().hide();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void registerUserToApplication(ActionEvent event) {
+    public void registerUserToApplication(ActionEvent event) throws Exception {
 
         if (NameOfBank.getValue() == null) {
             NameOfBank.setValue("");
         }
 
-        UserModel.RegistrationModel inputRegData = new UserModel.RegistrationModel(FirstName.getText(),
+        UserModel inputRegData = new UserModel(FirstName.getText(),
                 LastName.getText(), Email.getText(), Address.getText(), PhoneNr.getText(), Password.getText(),
                 PasswordConfirmation.getText(), NameOfBank.getValue().toString());
 
-        UserDAO userDAO = new UserDAO();
 
-
-        if (!(inputRegData.FirstName.isEmpty() || inputRegData.LastName.isEmpty() & inputRegData.Email.isEmpty() || inputRegData.Address.isEmpty() || inputRegData.PhoneNr.isEmpty() || inputRegData.Password.isEmpty() || inputRegData.PasswordConfirmation.isEmpty() || inputRegData.NameOfBank.equals(""))) {
+        if (!(inputRegData.FirstName.isEmpty() || inputRegData.LastName.isEmpty() & inputRegData.Email.isEmpty() || inputRegData.Address.isEmpty() || inputRegData.PhoneNr.isEmpty() || inputRegData.Password.isEmpty() || inputRegData.PasswordConfirmation.isEmpty())) {
             if (inputRegData.Password.equals(inputRegData.PasswordConfirmation)) {
-                String temp = userDAO.createUser(inputRegData);
+                String temp = clientHelper.createUser(inputRegData);
                 if (temp.equals("User added")) {
                     //Show another view
-                    handleRegistration(event);
+                    backToLogin(event);
 
                     Alert a1 = new Alert(Alert.AlertType.INFORMATION, "User " + FirstName.getText() + " has been " +
                             "added!", ButtonType.OK);
@@ -100,12 +85,19 @@ public class RegistrationController {
         }
     }
 
-    public void backToLogin(ActionEvent event) {
+    public void backToLogin(ActionEvent event) throws Exception {
         try {
             Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("/View/Login.fxml"));
-            stage.setTitle("Login");
-            stage.setScene(new Scene(root));
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/View/Login.fxml"));
+            Parent main = loader.load();
+            LoginController ctrl = loader.getController();
+            IBudgetClient cl = new BudgetClient();
+            IClientHelper handler = new ClientHelper(cl);
+            ctrl.init(handler);
+
+            stage.setTitle("Budget");
+            stage.setScene(new Scene(main));
             stage.show();
             // hides the parent window
             ((Node) (event.getSource())).getScene().getWindow().hide();
@@ -114,4 +106,6 @@ public class RegistrationController {
             e.printStackTrace();
         }
     }
+
+
 }

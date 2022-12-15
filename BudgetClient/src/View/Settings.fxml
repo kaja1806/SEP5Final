@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            fx:controller="Controller.OverviewController">
+    <top>
+        <AnchorPane prefHeight="87.0" prefWidth="600.0" style="-fx-background-color: #f7c19b;"
+                    BorderPane.alignment="CENTER">
+            <children>
+                <Text fill="WHITE" layoutX="224.0" layoutY="63.0" stroke="#8c5117" strokeType="OUTSIDE" text="SETTINGS"
+                      AnchorPane.leftAnchor="211.0">
+                    <font>
+                        <Font size="35.0"/>
+                    </font>
+                </Text>
+            </children>
+        </AnchorPane>
+    </top>
+    <center>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;"
+                    BorderPane.alignment="CENTER">
+            <children>
+                <Text layoutX="31.0" layoutY="42.0" stroke="#df8b8b" strokeType="OUTSIDE" strokeWidth="0.5"
+                      text="Notifications" textAlignment="CENTER" wrappingWidth="103.13671875"
+                      AnchorPane.bottomAnchor="266.6510416666667" AnchorPane.leftAnchor="31.0">
+                    <font>
+                        <Font name="System Bold" size="16.0"/>
+                    </font>
+                </Text>
+                <CheckBox disable="true" layoutX="334.0" layoutY="26.0" mnemonicParsing="false"
+                          AnchorPane.bottomAnchor="269.33333333333337"/>
+                <Text layoutX="33.0" layoutY="79.0" stroke="#df8b8b" strokeType="OUTSIDE" strokeWidth="0.5"
+                      text="Private Policy" textAlignment="CENTER" wrappingWidth="103.13671875"
+                      AnchorPane.bottomAnchor="226.66666666666669" AnchorPane.leftAnchor="33.0">
+                    <font>
+                        <Font name="System Bold" size="16.0"/>
+                    </font>
+                </Text>
+                <Button disable="true" layoutX="300.0" layoutY="62.0" mnemonicParsing="false" text="Read more &gt;"/>
+                <Text layoutX="33.0" layoutY="202.0" stroke="#df8b8b" strokeType="OUTSIDE" strokeWidth="0.5"
+                      text="Terms and Conditions" textAlignment="CENTER" wrappingWidth="167.13671875"
+                      AnchorPane.bottomAnchor="106.65104166666669" AnchorPane.leftAnchor="33.0">
+                    <font>
+                        <Font name="System Bold" size="16.0"/>
+                    </font>
+                </Text>
+                <Button disable="true" layoutX="300.0" layoutY="102.0" mnemonicParsing="false" text="Read more &gt;"/>
+                <Text layoutX="32.0" layoutY="162.0" stroke="#df8b8b" strokeType="OUTSIDE" strokeWidth="0.5"
+                      text="Share with your Friends" textAlignment="CENTER" wrappingWidth="182.13671875"
+                      AnchorPane.bottomAnchor="146.65104166666669" AnchorPane.leftAnchor="32.0">
+                    <font>
+                        <Font name="System Bold" size="16.0"/>
+                    </font>
+                </Text>
+                <Button disable="true" layoutX="300.0" layoutY="142.0" mnemonicParsing="false" text="Read more &gt;"/>
+                <Text layoutX="32.0" layoutY="122.0" stroke="#df8b8b" strokeType="OUTSIDE" strokeWidth="0.5"
+                      text="About us" textAlignment="CENTER" wrappingWidth="72.13671875"
+                      AnchorPane.bottomAnchor="186.65104166666669" AnchorPane.leftAnchor="32.0">
+                    <font>
+                        <Font name="System Bold" size="16.0"/>
+                    </font>
+                </Text>
+                <Button disable="true" layoutX="300.0" layoutY="182.0" mnemonicParsing="false" text="Read more &gt;"/>
+                <Text layoutX="31.0" layoutY="242.0" stroke="#df8b8b" strokeType="OUTSIDE" strokeWidth="0.5" text="Help"
+                      textAlignment="CENTER" wrappingWidth="40.13671875" AnchorPane.bottomAnchor="66.65104166666669"
+                      AnchorPane.leftAnchor="31.0">
+                    <font>
+                        <Font name="System Bold" size="16.0"/>
+                    </font>
+                </Text>
+                <Button disable="true" layoutX="299.0" layoutY="222.0" mnemonicParsing="false" text="Read more &gt;"/>
+
+                <Text layoutX="32.0" layoutY="282.0" stroke="#df8b8b" strokeType="OUTSIDE" strokeWidth="0.5"
+                      text="Rate this app" textAlignment="CENTER" wrappingWidth="101.13673400878906"
+                      AnchorPane.bottomAnchor="26.651041666666686" AnchorPane.leftAnchor="32.0">
+                    <font>
+                        <Font name="System Bold" size="16.0"/>
+                    </font>
+                </Text>
+                <ComboBox fx:id="Rate" disable="true" layoutX="276.0" layoutY="262.0" prefHeight="25.0"
+                          prefWidth="111.0" promptText="Tap to Rate"/>
+
+            </children>
+        </AnchorPane>
+    </center>
+    <right>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;"
+                    BorderPane.alignment="CENTER">
+            <children>
+                <Button layoutX="66.0" layoutY="262.0" mnemonicParsing="false" onAction="#goToOverview"
+                        style="-fx-background-color: #f7c19b;" text="Return to overview"
+                        AnchorPane.rightAnchor="14.666666666666686">
+                    <effect>
+                        <Reflection/>
+                    </effect>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                </Button>
+            </children>
+        </AnchorPane>
+    </right>
+</BorderPane>

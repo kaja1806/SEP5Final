@@ -1,8 +1,11 @@
 package DB;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-import static java.sql.DriverManager.*;
+import static java.sql.DriverManager.getConnection;
 
 /**
  * Takes care of the database access read/write

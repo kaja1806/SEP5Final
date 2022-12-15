@@ -1,6 +1,9 @@
 package Controller;
 
-import DB.UserDAO;
+import BudgetClient.BudgetClient;
+import BudgetClient.IBudgetClient;
+import Handlers.ClientHelper;
+import Handlers.IClientHelper;
 import Model.UserCardModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -27,23 +30,33 @@ public class CreditCardController {
     public Button backbutton;
     public Text topText;
 
-    UserDAO userDAO = new UserDAO();
+    public IClientHelper clientHelper;
 
-    public void initialize() {
-        ObservableList<UserCardModel> cards = userDAO.ifCardExistsPerUser();
-        int userIncome = userDAO.getIncomePerUser();
 
-        if (cards != null) {
+    public void init(IClientHelper handler) {
+
+        this.clientHelper = handler;
+        ObservableList<UserCardModel> cards = handler.ifCardExistsPerUser();
+        int userIncome = handler.getIncomePerUser();
+
+        if (cards.size() != 0) {
             displayUserCard(cards, userIncome);
         }
     }
 
-    public void goToOverview(ActionEvent event) {
+    public void goToOverview(ActionEvent event) throws Exception {
         try {
             Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("/View/Overview.fxml"));
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/View/Overview.fxml"));
+            Parent main = loader.load();
+            OverviewController ctrl = loader.getController();
+            IBudgetClient cl = new BudgetClient();
+            IClientHelper handler = new ClientHelper(cl);
+            ctrl.init(handler);
+
             stage.setTitle("Overview");
-            stage.setScene(new Scene(root));
+            stage.setScene(new Scene(main));
             stage.show();
             ((Node) (event.getSource())).getScene().getWindow().hide();
 
@@ -52,11 +65,11 @@ public class CreditCardController {
         }
     }
 
-    public void ifCardExists(ActionEvent event) {
+    public void ifCardExists(ActionEvent event) throws Exception {
         addCardToUser(event);
     }
 
-    public void addCardToUser(ActionEvent event) {
+    public void addCardToUser(ActionEvent event) throws Exception {
 
         String cvc = Cvc.getText();
         String income = EstimatedIncome.getText();
@@ -70,11 +83,10 @@ public class CreditCardController {
         UserCardModel cardInput = new UserCardModel(CardholderName.getText(), CardNumber.getText(),
                 ValidDate.getValue(), cvcParse, Cardnickname.getText());
 
-        UserDAO userDAO = new UserDAO();
 
         if (!(cardInput.CardholderName.isEmpty() || cardInput.getCardNumber().isEmpty() || cardInput.ValidDate == null || cvc.isEmpty())) {
-            if (userDAO.ifCardExistsPerUser() == null) {
-                String temp = userDAO.createCard(cardInput, incomeParse);
+            if (clientHelper.ifCardExistsPerUser().size() == 0) {
+                String temp = clientHelper.createCard(cardInput, incomeParse);
                 if (temp.equals("Card Added")) {
                     //Show another view
                     goToOverview(event);
@@ -87,11 +99,11 @@ public class CreditCardController {
                     a1.show();
                 }
             } else {
-                String temp = userDAO.updateCard(cardInput, incomeParse);
+                String temp = clientHelper.updateCard(cardInput, incomeParse);
                 if (temp.equals("Card Edited")) {
                     //Show another view
-                    ObservableList<UserCardModel> cards = userDAO.ifCardExistsPerUser();
-                    int userIncome = userDAO.getIncomePerUser();
+                    ObservableList<UserCardModel> cards = clientHelper.ifCardExistsPerUser();
+                    int userIncome = clientHelper.getIncomePerUser();
                     displayUserCard(cards, userIncome);
                     Alert a1 = new Alert(Alert.AlertType.INFORMATION, "Card has been " + "edited!", ButtonType.OK);
                     a1.show();
@@ -120,7 +132,13 @@ public class CreditCardController {
             Cvc.setText(String.valueOf(card.getCvc()));
             Cardnickname.setText(card.getCardNickname());
             EstimatedIncome.setText(String.valueOf(userIncome));
-            backbutton.setOnAction(event -> goToOverview(event));
+            backbutton.setOnAction(event -> {
+                try {
+                    goToOverview(event);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            });
         }
     }
 }

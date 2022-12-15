@@ -3,14 +3,14 @@ package DB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
-
+import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import static DB.User_Authentication.userModel;
 
 
-public class ExpensesDAO {
+public class ExpensesDAO implements Serializable {
     private Conn conn;
 
     public ObservableList<PieChart.Data> getAllExpenses() {

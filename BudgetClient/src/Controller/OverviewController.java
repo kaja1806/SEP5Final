@@ -1,7 +1,9 @@
 package Controller;
 
-import DB.ExpensesDAO;
-
+import BudgetClient.BudgetClient;
+import BudgetClient.IBudgetClient;
+import Handlers.ClientHelper;
+import Handlers.IClientHelper;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -19,21 +21,29 @@ public class OverviewController {
     public PieChart pieChart;
     public AnchorPane border;
 
-    ExpensesDAO ex = new ExpensesDAO();
+    public IClientHelper clientHelper;
 
-    public void initialize() {
+    public void init(IClientHelper handler) {
+        this.clientHelper = handler;
         if (pieChart != null) {
-            ObservableList<PieChart.Data> data = ex.getAllExpenses();
+            ObservableList<PieChart.Data> data = handler.getAllExpenses();
             pieChart.getData().addAll(data);
         }
     }
 
-    public void makePayment() {
+    public void makePayment() throws Exception {
         try {
             Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("/View/Payment.fxml"));
-            stage.setTitle("Registration");
-            stage.setScene(new Scene(root));
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/View/Payment.fxml"));
+            Parent main = loader.load();
+            PaymentController ctrl = loader.getController();
+            IBudgetClient cl = new BudgetClient();
+            IClientHelper handler = new ClientHelper(cl);
+            ctrl.init(handler);
+
+            stage.setTitle("Expense");
+            stage.setScene(new Scene(main));
             stage.show();
             border.getScene().getWindow().hide();
 
@@ -55,6 +65,19 @@ public class OverviewController {
         }
     }
 
+    public void goToSettings() {
+        try {
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("/View/Settings.fxml"));
+            stage.setTitle("Premium");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void extraUser() {
         try {
             Stage stage = new Stage();
@@ -67,12 +90,19 @@ public class OverviewController {
         }
     }
 
-    public void addCard() {
+    public void addCard() throws Exception {
         try {
             Stage stage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("/View/CreditCard.fxml"));
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/View/CreditCard.fxml"));
+            Parent main = loader.load();
+            CreditCardController ctrl = loader.getController();
+            IBudgetClient cl = new BudgetClient();
+            IClientHelper handler = new ClientHelper(cl);
+            ctrl.init(handler);
+
             stage.setTitle("Credit Card");
-            stage.setScene(new Scene(root));
+            stage.setScene(new Scene(main));
             stage.show();
             border.getScene().getWindow().hide();
 
@@ -80,6 +110,7 @@ public class OverviewController {
             e.printStackTrace();
         }
     }
+
 
     public void goToOverview(ActionEvent event) {
         ((Node) (event.getSource())).getScene().getWindow().hide();

@@ -1,10 +1,10 @@
 package Server;
 
-import Interface.*;
+import Interface.IServer;
+import Interface.IServerClient;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.sql.Connection;
 
 public class Server implements IServer {
     public Server() throws RemoteException {
@@ -14,6 +14,11 @@ public class Server implements IServer {
     @Override
     public void message(String msg) {
         System.out.println(msg);
+    }
+
+    @Override
+    public IServerClient getClient() throws RemoteException {
+        return new ServerClientHandler();
     }
 
 }
