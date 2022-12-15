@@ -25,7 +25,6 @@ public class CreditCardController {
     public TextField Cvc;
     public TextField CardholderName;
     public TextField EstimatedIncome;
-    public ComboBox Cardnicknamedropdown;
     public TextField Cardnickname;
     public Button Addeditcard;
     public Button backbutton;
@@ -120,6 +119,7 @@ public class CreditCardController {
                     displayUserCard(cards, userIncome);
                     Alert a1 = new Alert(Alert.AlertType.INFORMATION, "Card has been " + "edited!", ButtonType.OK);
                     a1.show();
+                    goToOverview(event);
 
                 } else {
                     Alert a1 = new Alert(Alert.AlertType.INFORMATION, "Error 404", ButtonType.OK);
@@ -145,6 +145,7 @@ public class CreditCardController {
             Cvc.setText(String.valueOf(card.getCvc()));
             Cardnickname.setText(card.getCardNickname());
             EstimatedIncome.setText(String.valueOf(userIncome));
+            NameOfBank.setValue(String.valueOf(card.getNameOfBank()));
             backbutton.setOnAction(event -> {
                 try {
                     goToOverview(event);

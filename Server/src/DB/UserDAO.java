@@ -21,7 +21,7 @@ public class UserDAO implements Serializable {
     public String createUser(UserModel userModel) {
         conn = Conn.getInstance();
         String sql =
-                "INSERT INTO users(firstname,lastname,email,address,phonenr,password,nameofbank) "
+                "INSERT INTO users(firstname,lastname,email,address,phonenr,password) "
                         + "values('" + userModel.getFirstName()
                         + "','" + userModel.getLastName()
                         + "','" + userModel.getEmail()
@@ -81,7 +81,7 @@ public class UserDAO implements Serializable {
                         + "cardnumber = " + userCard.getCardNumber() + "," + " "
                         + "validdate = " + "'" + userCard.getValidDate() + "'," + " "
                         + "cvc = " + userCard.getCvc() + "," + " "
-                        + "cardnickname = " + "'" + userCard.getCardNickname() + "'"
+                        + "cardnickname = " + "'" + userCard.getCardNickname() + "',"
                         + "nameofbank = " + "'" + userCard.getNameOfBank() + "'"
                         + " " + "WHERE userid =" + userModel.getUserID() + ";";
         String sql2 = "UPDATE users SET " + "income = " + income + " " + "WHERE id =" + userModel.getUserID() + ";";
@@ -102,7 +102,7 @@ public class UserDAO implements Serializable {
         conn = Conn.getInstance();
         ObservableList<UserCardModel> allCardsPerUser = FXCollections.observableArrayList();
 
-        String sql = "SELECT cardholdername,cardnumber,validdate,cvc,userid,cardnickname FROM usercard WHERE userid= "
+        String sql = "SELECT cardholdername,cardnumber,validdate,cvc,userid,cardnickname,nameofbank FROM usercard WHERE userid= "
                 + userModel.getUserID() + ";";
         try {
             ResultSet rs = conn.query(sql);
